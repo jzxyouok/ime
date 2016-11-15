@@ -14,28 +14,28 @@
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">标题</label>
                                         <div class="col-md-9">
-                                            <input type="title" placeholder="title" class="form-control">
+                                            <input type="text" name="title" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">置顶</label>
                                         <div class="col-md-9">
                                             <label class="checkbox">
-                                                <input type="checkbox" data-toggle="checkbox" value="1" >
+                                                <input type="checkbox" data-toggle="checkbox" name="top" />
                                             </label>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Banner</label>
                                         <div class="col-md-9">
-                                            <input type="file" class="file" id="uploadBanner" multiple>
+                                            <input type="file" class="file" name="banner" id="uploadBanner" multiple />
                                             <div id="ErrorBlock" class="help-block"></div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">内容</label>
                                         <div class="col-md-9">
-                                            <textarea id="articleEditor" style="display:none; height: 400px;"></textarea>
+                                            <textarea name="content" id="articleEditor" style="display:none; height: 400px;"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -51,17 +51,9 @@
                                     <button class="btn btn-default pull-right">预览</button>
                                     <div class="clear" style="margin-bottom: 50px;"></div>
                                     <select name="cities" class="selectpicker" data-title="文章栏目" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
-                                        <option value="id">Bahasa Indonesia</option>
-                                        <option value="sv">Svenska</option>
-                                        <option value="tr">Türkçe</option>
-                                        <option value="is">Íslenska</option>
-                                        <option value="cs">Čeština</option>
-                                        <option value="ru">Русский</option>
-                                        <option value="th">ภาษาไทย</option>
-                                        <option value="zh">中文 (简体)</option>
-                                        <option value="zh-TW">中文 (繁體)</option>
-                                        <option value="ja">日本語</option>
-                                        <option value="ko">한국어</option>
+                                        @foreach($cat as $value)
+                                        <option value="{{ $value['id'] }}">{{ $value['cat_title'] }}</option>
+                                        @endforeach
                                     </select>
                                     <div class="content-full-width" style="height: 50px; margin-top: 30px;">
                                         <button id="sabeGarbage" class="btn btn-danger btn-simple">移至垃圾箱</button>
@@ -71,26 +63,34 @@
                             </div>
                             <div class="card">
                                 <div class="header">
-                                    <h4 class="title">文章标签</h4>
+                                    <h4 class="title">文章 SEO 信息</h4>
                                 </div>
                                 <div class="content">
-                                    <input name="tagsinput" class="tagsinput tag-azure" value="" />
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="header">
-                                    <h4 class="title">文章信息</h4>
-                                </div>
-                                <div class="content">
-                                    <div class="col-md-6 articleInfo">
-                                        <h3>tizips</h3>
-                                        <p>Author</p>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group" style="margin: 0px;">
+                                                <label>SEO 关键词</label>
+                                                <input name="tags" class="tagsinput tag-azure" value="" />
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6 articleInfo">
-                                        <p>Word</p>
-                                        <h3 id="wordCount">1248</h3>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group" style="margin: 0px;">
+                                                <label>seo 标题</label>
+                                                <input type="text" class="form-control" placeholder="SEO title">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="clearfix"></div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group" style="margin: 0px;">
+                                                <label>seo 描述</label>
+                                                <textarea name="description" rows="5" class="form-control" placeholder="SEO 描述"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -102,26 +102,29 @@
 @section('JavaScript')
     <script src="/Static/Editor/js/wangEditor.min.js"></script>
     <script src="/Static/Fileinput/js/fileinput.min.js"></script>
-    <script src="/Static/Fileinput/locales/zh.js"></script>
+    <script src="/Static/Fileinput/js/locales/zh.js"></script>
             <script>
 
                 $("#uploadBanner").fileinput({
                     language: 'zh',
-                    uploadUrl: '#', // you must set a valid URL here else you will get an error
+                    uploadUrl: '/admin/uploadPic', // you must set a valid URL here else you will get an error
                     allowedFileExtensions : ['jpg', 'png','gif'],
                     elErrorContainer: '#ErrorBlock',
                     overwriteInitial: false,
                     showPreview: false,
                     maxFileSize: 400,
                     maxFilesNum: 10,
+                    uploadExtraData: {
+                        _token: '{{ csrf_token() }}'
+                    },
                     slugCallback: function(filename) {
                         return filename.replace('(', '_').replace(']', '_');
                     }
                 });
-                /*
-                 $("#test-upload").on('fileloaded', function(event, file, previewId, index) {
-                 alert('i = ' + index + ', id = ' + previewId + ', file = ' + file.name);
-                 });
+//                 $("#uploadBanner").on('fileloaded', function(event, file, previewId, index) {
+////                     console.log(file.response[0]);
+//                 });
+                /**
                  图片上传完成之后的回调函数
                  */
             </script>

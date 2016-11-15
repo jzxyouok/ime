@@ -109,7 +109,7 @@
 @section('JavaScript')
 
     <script src="/Static/Fileinput/js/fileinput.min.js"></script>
-    <script src="/Static/Fileinput/locales/zh.js"></script>
+    <script src="/Static/Fileinput/js/locales/zh.js"></script>
     <script>
 
         $("#uploadThumb").fileinput({

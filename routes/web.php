@@ -18,6 +18,7 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'login'], function () {
     Route::get('editPwd' , 'Admin\ProfileController@editPwd');
     Route::get('system' , 'Admin\SystemController@index');
     Route::get('addArt' , 'Admin\ArticleController@addArticle');
+    Route::post('uploadPic' , 'Admin\ArticleController@uploadBanner');
     Route::get('art' , 'Admin\ArticleController@articleList');
     Route::get('cat' , 'Admin\CatController@catList');
     Route::get('addCat/{catPid?}' , 'Admin\CatController@addCat');
