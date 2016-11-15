@@ -10,6 +10,7 @@
             }
 
             body {
+                color: #636b6f;
                 margin: 0;
                 padding: 0;
                 width: 100%;
@@ -37,7 +38,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">for you , for every</div>
+                <div class="title">Just a minute, Please.</div>
             </div>
         </div>
     </body>

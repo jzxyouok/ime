@@ -25,6 +25,7 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'login'], function () {
     Route::post('addCatOperate' , 'Admin\CatController@addCatOperate');
     Route::post('editCatOperate' , 'Admin\CatController@editCatOperate');
     Route::get('editCatStatus' , 'Admin\CatController@editStatus');
+    Route::get('delCat' , 'Admin\CatController@delCat');
     Route::get('comment' , 'Admin\CommentController@index');
     Route::get('msg' , 'Admin\MsgController@index');
     Route::get('link' , 'Admin\LinkController@index');
@@ -32,6 +33,7 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'login'], function () {
     Route::post('toAddLink' , 'Admin\LinkController@toAddLink');
     Route::get('editLink/{linkId}' , 'Admin\LinkController@editLink');
     Route::post('toEditLink' , 'Admin\LinkController@toEditLink');
+    Route::get('delLink' , 'Admin\LinkController@delLink');
     Route::get('setting' , 'Admin\SetController@index');
 });
 

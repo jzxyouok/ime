@@ -12,10 +12,12 @@ class Link extends Model
 {
     public $dateFormat = "U";
 
-    public function select() {
+    public function selectLinkPage() {
         return self::join('users' , 'links.operate_user' , '=' , 'users.id')
             ->join('links_status' , 'links.web_status' , '=' , 'links_status.id')
             ->select('links.*' , 'users.name as operate_user_name' , 'links_status.link_status_name')
+            ->orderby('web_order')
+            ->orderby('id' , 'ASC')
             ->paginate(10);
     }
 
@@ -40,9 +42,23 @@ class Link extends Model
     }
 
     public function updateLink() {
-        $linkInfo = Request::except('_token');
-        $link = self::find($linkInfo['id']);
-        dd($link);
+        $linkInfo = Request::only(['id','web_admin','web_description','web_email','web_logo','web_name','web_order','web_status','web_url']);
+        $link = self::select('web_admin','web_description','web_email','web_logo','web_name','operate_user','web_order','web_status','web_url')
+            ->find($linkInfo['id']);
+
+        foreach ($linkInfo as $key => $val) {
+            $link -> $key = $val;
+        }
+
+        $userInfo = Session::get('userInfo');
+        $link -> operate_user = $userInfo -> id;
+
+        return $link->save();
+
+    }
+
+    public function delLink() {
+        return $this -> destroy(Request::get('id'));
     }
 
     public function validatorAddLink() {

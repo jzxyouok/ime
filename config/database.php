@@ -61,7 +61,7 @@ return [
             'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
-            'prefix' => env('DB_PREFIX', ''),
+            'prefix' => env('DB_PREFIX', 'vi_'),
             'strict' => true,
             'engine' => null,
         ],
@@ -121,6 +121,13 @@ return [
             'password' => env('REDIS_PASSWORD', null),
             'port'     => env('REDIS_PORT', 6379),
             'database' => 1,
+        ],
+
+        'queue' => [
+            'host'     => env('REDIS_HOST', 'localhost'),
+            'password' => env('REDIS_PASSWORD', null),
+            'port'     => env('REDIS_PORT', 6379),
+            'database' => 2,
         ],
 
     ],

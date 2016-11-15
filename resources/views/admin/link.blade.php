@@ -30,7 +30,7 @@
                                 <tr>
                                     <td>{{ $value -> id }}</td>
                                     <td>{{ $value -> web_name }}</td>
-                                    <td>{{ $value -> web_url }}</td>
+                                    <td><a href="{{ $value -> web_url }}" target="_blank">{{ $value -> web_url }}</a></td>
                                     <td>{{ $value -> operate_user_name }}</td>
                                     <td>{{ $value -> updated_at }}</td>
                                     <td>
@@ -83,10 +83,37 @@
                 $().ready(function(){
                     window.operateEvents = {
                         'click .remove': function (e, value, row, index) {
-                            console.log(row);
-                            $table.bootstrapTable('remove', {
-                                field: 'id',
-                                values: [row.id]
+                            swal({  title: "确定删除 ?",
+                                text: "友情链接将会被删除，此操作不可逆 !",
+                                type: "warning",
+                                showCancelButton: true,
+                                confirmButtonClass: "btn btn-info btn-fill",
+                                confirmButtonText: "确定 !",
+                                cancelButtonClass: "btn btn-danger btn-fill",
+                                cancelButtonText: "取消",
+                                closeOnConfirm: false,
+                            },function(){
+                                $.ajax({
+                                    url: '/admin/delLink',
+                                    type: 'get',
+                                    data: { id: row.id},
+                                    success: function (data) {
+                                        if (data['status']===1) {
+                                            notify('success' , data['msg']);
+                                            $table.bootstrapTable('remove', {
+                                                field: 'id',
+                                                values: [row.id]
+                                            });
+                                        }else if (data['status']===0) {
+                                            notify('error' , data['msg']);
+                                        }else {
+                                            notify('error' , '服务器错误，请稍后请重试 ！');
+                                        }
+                                    },
+                                    error: function () {
+                                        notify('error' , '服务器错误，请稍后请重试 ！');
+                                    }
+                                });
                             });
                         }
                     };

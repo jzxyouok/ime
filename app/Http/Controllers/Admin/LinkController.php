@@ -13,7 +13,7 @@ class LinkController extends Controller
         $link = new Link();
         $title = '友链管理';
 //        dd($link->select());
-        $linkInfo = $link -> select();
+        $linkInfo = $link -> selectLinkPage();
         return view('admin.link' , compact('title')) -> with('link' , $linkInfo);
     }
 
@@ -39,9 +39,14 @@ class LinkController extends Controller
         if (!$link->validatorLinkExists(Request::get('id'))) {
             $Api -> Message = '友链不存在';
             return $Api -> AjaxReturn();
-//            return abort('404');
         }
-        $link -> updateLink();
+        if(!$link -> updateLink()){
+            $Api -> Message = '修改失败';
+        }else{
+            $Api -> Status = 1;
+            $Api -> Message = '修改成功';
+        }
+        return $Api -> AjaxReturn();
     }
 
     public function toAddLink() {
@@ -57,6 +62,22 @@ class LinkController extends Controller
         }else{
             $Api -> Status = 1;
             $Api -> Message = '添加成功';
+        }
+        return $Api -> AjaxReturn();
+    }
+
+    public function delLink() {
+        $Api = new Api();
+        $link = new Link();
+        if (!$link->validatorLinkExists(Request::get('id'))) {
+            $Api -> Message = '友链不存在';
+            return $Api -> AjaxReturn();
+        }
+        if (!$link -> delLink()) {
+            $Api -> Message = '删除失败';
+        }else{
+            $Api -> Status = 1;
+            $Api -> Message = ' 删除成功';
         }
         return $Api -> AjaxReturn();
     }
