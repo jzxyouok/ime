@@ -27,7 +27,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>笔名</label>
-                                                <input type="text" class="form-control" placeholder="Company" />
+                                                <input type="text" class="form-control" />
                                             </div>
                                         </div>
                                     </div>
@@ -45,7 +45,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>邮箱</label>
-                                                <input type="text" class="form-control" placeholder="Company" />
+                                                <input type="text" class="form-control" placeholder="***@example.com" />
                                             </div>
                                         </div>
                                     </div>
@@ -96,9 +96,7 @@
                             </div>
                             <hr>
                             <div class="text-center">
-                                <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
-                                <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
-                                <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
+                                <button href="#" class="btn btn-simple"><i class="fa fa-github"></i></button>
 
                             </div>
                         </div>
