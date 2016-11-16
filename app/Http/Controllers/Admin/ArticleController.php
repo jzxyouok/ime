@@ -26,13 +26,11 @@ class ArticleController extends Controller
         $filePath = '/upload/article/';
         $fileName =rand(1,100).date("YmdHi").'.'.$file->getClientOriginalExtension();
 
-        $file->move(base_path().'/public'.$filePath , $fileName);
-//
-//        dd(base_path().'/public'.$filePath.$fileName);
-//        $uploadPath=$filePath.$fileName;
-//        return $filePath.$fileName;
+        $file -> move(base_path().'/public'.$filePath , $fileName);
+
         return Response::json([
-            ' initialPreview'  =>  '<img src="'.$filePath.$fileName.'" />'
+            'info'  =>  '1',
+            'cont'  =>  $filePath.$fileName
         ]);
     }
 }

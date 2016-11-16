@@ -1,6 +1,7 @@
 @extends('admin.admin')
 @section('Style')
     <link rel="stylesheet" href="/Static/Editor/css/wangEditor.min.css">
+    <link href="https://cdn.bootcss.com/bootstrap-fileinput/4.3.5/css/fileinput.min.css" rel="stylesheet">
 @endsection
 @section('content')
             <div class="container-fluid">
@@ -42,6 +43,14 @@
                                                         <div class="col-md-10">
                                                             <input type="text" name="name" placeholder="栏目名称" value="{{ $cat -> cat_name }}" class="form-control">
                                                         </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">栏目图片</label>
+                                                        <div class="col-md-10">
+                                                            <input type="file" class="file" name="banner" id="uploadBanner" data-min-file-count="1" />
+                                                            <div id="ErrorBlock" class="help-block"></div>
+                                                        </div>
+                                                        <input type="hidden" name="bannerPic" />
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-md-2 control-label">链接地址</label>
@@ -124,6 +133,40 @@
 @endsection
 @section('JavaScript')
     <script src="/Static/Editor/js/wangEditor.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-fileinput/4.3.5/js/fileinput.min.js"></script>
+    {{--<script src="/Static/Fileinput/js/locales/zh.js"></script>--}}
+    <script src="https://cdn.bootcss.com/bootstrap-fileinput/4.3.5/js/locales/zh.min.js"></script>
+    <script>
+
+        $("#uploadBanner").fileinput({
+            language: 'zh',
+            uploadUrl: '/admin/uploadPic', // you must set a valid URL here else you will get an error
+            allowedFileExtensions: ['jpg', 'png','gif'],
+            elErrorContainer: '#ErrorBlock',
+            showUpload: false,
+            showRemove: false,
+            showCaption: true,
+            dropZoneEnabled: false,
+//            overwriteInitial: false,
+            maxFileCount: 1,
+            uploadExtraData: {
+                _token: '{{ csrf_token() }}'
+            },
+//            initialPreview: [
+//                "<img src='/upload/article/1201611160138.jpg' width='100%' class='file-preview-image' alt='Desert' title='Desert'>"
+//            ],
+            slugCallback: function(filename) {
+                return filename.replace('(', '_').replace(']', '_');
+            }
+        }).on('fileuploaded' , function (e, data) {
+            if (data.response['info'] ==1) {
+                $("input[name=bannerPic]").val(data.response['cont']);
+            }
+        });
+        /**
+         图片上传完成之后的回调函数
+         */
+    </script>
     <script type="text/javascript">
         // 阻止输出log
         // wangEditor.config.printLog = false;
