@@ -5,11 +5,15 @@ namespace App\Model;
 use App\Api\Api;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
+use Laravel\Scout\Searchable;
 use Validator;
 use Request;
 
 class Link extends Model
 {
+
+//    use Searchable;
+
     public $dateFormat = "U";
 
     public function selectLinkPage() {

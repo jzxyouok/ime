@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Expand\UploadController;
+use App\Expand\UploadFile;
 use App\Http\Controllers\Controller;
 use App\Model\Category;
+use App\Model\Upload;
 use Response;
 use Illuminate\Support\Facades\Storage;
 use Request;
@@ -22,15 +25,14 @@ class ArticleController extends Controller
         return view('admin.addArticle' , compact('title'))->with('cat' , $catInfo);
     }
     public function uploadBanner() {
-        $file = Request::file('banner');
-        $filePath = '/upload/article/';
-        $fileName =rand(1,100).date("YmdHi").'.'.$file->getClientOriginalExtension();
 
-        $file -> move(base_path().'/public'.$filePath , $fileName);
+        $upload = new Upload();
 
-        return Response::json([
-            'info'  =>  '1',
-            'cont'  =>  $filePath.$fileName
-        ]);
+        $upload -> field = 'banner';
+        $upload -> fileTitle = '';
+        $upload -> path = '/upload/article';
+
+        return $upload -> upload();
+
     }
 }

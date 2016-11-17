@@ -2,7 +2,7 @@
 @section('Style')
     <link rel="stylesheet" href="/Static/Editor/css/wangEditor.min.css">
     {{--<link rel="stylesheet" href="/Static/Fileinput/css/fileinput.min.css">--}}
-    <link href="https://cdn.bootcss.com/bootstrap-fileinput/4.3.5/css/fileinput.min.css" rel="stylesheet">
+
 @endsection
 @section('content')
             <div class="container-fluid">
@@ -130,8 +130,8 @@
                 return filename.replace('(', '_').replace(']', '_');
             }
         }).on('fileuploaded' , function (e, data) {
-            if (data.response['info'] ==1) {
-                $("input[name=bannerPic]").val(data.response['cont']);
+            if (data.response['status'] ==0) {
+                $("input[name=bannerPic]").val(data.response['url']);
             }
         });
         /**

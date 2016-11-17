@@ -258,6 +258,8 @@
                         $table.bootstrapTable('resetView');
                     });
                 });
-
+                function test() {
+                    alert('test');
+                }
             </script>
 @endsection

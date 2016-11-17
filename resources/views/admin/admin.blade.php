@@ -15,13 +15,15 @@
 
     <link href="https://cdn.css.net/files/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/Static/admin/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
-    <link href="/Static/admin/css/demo.css" rel="stylesheet" />
+    {{--<link href="/Static/admin/css/demo.css" rel="stylesheet" />--}}
+    <link href="https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.css.net/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css"/>
+    <link href="https://cdn.bootcss.com/bootstrap-fileinput/4.3.5/css/fileinput.min.css" rel="stylesheet">
     @yield('Style')
 
     <link href="https://cdn.css.net/files/fontawesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.css.network/css?family=Roboto:400,700,300" rel="stylesheet" type="text/css">
-    <link href="/Static/admin/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    {{--<link href="/Static/admin/css/pe-icon-7-stroke.css" rel="stylesheet" />--}}
 
     <style>
         @font-face {
@@ -202,7 +204,7 @@
             </div>
         </nav>
 
-        <div class="content">
+        <div class="content" id="content">
             @yield('content')
         </div>
 
@@ -272,7 +274,32 @@
 <script src="/Static/admin/js/jquery.sharrre.js"></script>
 <script type="text/javascript" src="https://cdn.css.net/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
 <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
-<script src="/Static/admin/js/demo.js"></script>
+{{--<script src="/Static/admin/js/demo.js"></script>--}}
+<script src="/js/jquery.pjax.js"></script>
+<script src="https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+<script>
+    (function ($) {
+        var ime = {
+            init: function () {
+                $(document).pjax('a:not(a[target="_blank"])', '#content', {
+                    timeout: 1600,
+                    maxCacheLength: 500
+                });
+                $(document).on('pjax:start', function() {
+                    NProgress.start();
+                });
+                $(document).on('pjax:end', function() {
+                    NProgress.done();
+                });
+            }
+        };
+        window.ime = ime;
+    })(jQuery);
+    $(document).ready(function()
+    {
+        ime.init();
+    });
+</script>
 
 @yield('JavaScript')
 
