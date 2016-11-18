@@ -73,13 +73,13 @@
             <ul class="nav">
                 <li>
                     <a href="/admin/system">
-                        <i class="pe-7s-graph"></i>
+                        <i class="iconfont">&#xe631;</i>
                         <p>仪盘</p>
                     </a>
                 </li>
                 <li>
                     <a data-toggle="collapse" href="#Article">
-                        <i class="pe-7s-plugin"></i>
+                        <i class="iconfont">&#xe60b;</i>
                         <p>文章
                             <b class="caret"></b>
                         </p>
@@ -94,7 +94,7 @@
 
                 <li>
                     <a data-toggle="collapse" href="#Category">
-                        <i class="pe-7s-note2"></i>
+                        <i class="iconfont">&#xe652;</i>
                         <p>栏目
                             <b class="caret"></b>
                         </p>
@@ -106,23 +106,28 @@
                         </ul>
                     </div>
                 </li>
-
+                <li>
+                    <a href="/admin/file">
+                        <i class="iconfont">&#xe628;</i>
+                        <p>资源</p>
+                    </a>
+                </li>
                 <li>
                     <a href="/admin/msg">
-                        <i class="pe-7s-graph1"></i>
+                        <i class="iconfont">&#xe632;</i>
                         <p>留言</p>
                     </a>
                 </li>
                 <li>
                     <a href="/admin/comment">
-                        <i class="pe-7s-graph1"></i>
+                        <i class="iconfont">&#xe662;</i>
                         <p>评论</p>
                     </a>
                 </li>
 
                 <li>
                     <a data-toggle="collapse" href="#Link">
-                        <i class="pe-7s-news-paper"></i>
+                        <i class="iconfont">&#xe65c;</i>
                         <p>友链
                             <b class="caret"></b>
                         </p>
@@ -137,7 +142,7 @@
 
                 <li>
                     <a data-toggle="collapse" href="#Setting">
-                        <i class="pe-7s-map-marker"></i>
+                        <i class="iconfont">&#xe655;</i>
                         <p>系统
                             <b class="caret"></b>
                         </p>
@@ -187,12 +192,12 @@
                             <ul class="dropdown-menu dropdown-with-icons">
                                 <li>
                                     <a href="/loginLock">
-                                        <i class="pe-7s-lock"></i> 锁定
+                                        <i class="iconfont">&#xe633;</i> 锁定
                                     </a>
                                 </li>
                                 <li>
                                     <a href="/loginOut" class="text-danger">
-                                        <i class="pe-7s-close-circle"></i>
+                                        <i class="iconfont">&#xe61e;</i>
                                         退出
                                     </a>
                                 </li>

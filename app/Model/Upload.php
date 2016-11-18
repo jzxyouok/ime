@@ -12,7 +12,7 @@ class Upload extends Model
 
     public $dateFormat = "U";
 
-    public $dates = ['created_at'];
+    protected $dates = ['created_at'];
 
     public $field = 'image';
 

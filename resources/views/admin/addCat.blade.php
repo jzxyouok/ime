@@ -315,7 +315,7 @@
                         cat_url: $("input[name=url]").val(),
                         cat_status: $("input[name=status]:checked").val() ? 1 : 0,
                         cat_page: $("input[name=page]:checked").val() ? 1 : 0,
-                        cat_page_content: $("textarea[name=content]").val(),
+                        cat_page_content: $("textarea[name=content]").val()
                     },
                     success: function (data) {
                         if (data['status'] === 1) {

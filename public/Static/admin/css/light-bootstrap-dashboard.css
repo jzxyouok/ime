@@ -6773,7 +6773,7 @@ star {
   line-height: 28px;
   float: left;
 }
-.dropdown-with-icons .dropdown-menu i[class^="pe-"] {
+.dropdown-with-icons .dropdown-menu i[class^="iconfont"] {
   font-size: 24px;
   width: 46px;
 }

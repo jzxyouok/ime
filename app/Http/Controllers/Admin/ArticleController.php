@@ -24,6 +24,10 @@ class ArticleController extends Controller
         $catInfo = $category -> simpleFind();
         return view('admin.addArticle' , compact('title'))->with('cat' , $catInfo);
     }
+
+    public function toAddArt() {
+        dd(Request::except('_token'));
+    }
     public function uploadBanner() {
 
         $upload = new Upload();

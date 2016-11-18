@@ -7,7 +7,7 @@
 @section('content')
             <div class="container-fluid">
                 <div class="row">
-                    <form class="form-horizontal">
+                    <form id="artForm" class="form-horizontal">
                         <div class="col-md-8">
                             <div class="card">
                                 <div class="header">撰写新文章</div>
@@ -49,17 +49,17 @@
                                     <h4 class="title">发布</h4>
                                 </div>
                                 <div class="content">
-                                    <button id="saveDraft" class="btn btn-default">保存草稿</button>
+                                    <button type="button" value="1" class="btn btn-default">保存草稿</button>
                                     <button class="btn btn-default pull-right">预览</button>
                                     <div class="clear" style="margin-bottom: 50px;"></div>
-                                    <select name="cities" class="selectpicker" data-title="文章栏目" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
+                                    <select name="category" class="selectpicker" data-title="文章栏目" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
                                         @foreach($cat as $value)
                                         <option value="{{ $value['id'] }}">{{ $value['cat_title'] }}</option>
                                         @endforeach
                                     </select>
                                     <div class="content-full-width" style="height: 50px; margin-top: 30px;">
-                                        <button id="sabeGarbage" class="btn btn-danger btn-simple">移至垃圾箱</button>
-                                        <button type="submit" class="btn btn-info btn-fill pull-right">发布</button>
+                                        <button type="button" value="2" class="btn btn-danger btn-simple">移至垃圾箱</button>
+                                        <button type="button" value="0" class="btn btn-info btn-fill pull-right">发布</button>
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +72,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group" style="margin: 0px;">
                                                 <label>SEO 关键词</label>
-                                                <input name="tags" class="tagsinput tag-azure" value="" />
+                                                <input name="seoKeyword" class="tagsinput tag-azure" value="" />
                                             </div>
                                         </div>
                                     </div>
@@ -81,7 +81,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group" style="margin: 0px;">
                                                 <label>seo 标题</label>
-                                                <input type="text" class="form-control" placeholder="SEO title">
+                                                <input type="text" class="form-control" name="seoTitle" placeholder="SEO title">
                                             </div>
                                         </div>
                                     </div>
@@ -89,7 +89,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group" style="margin: 0px;">
                                                 <label>seo 描述</label>
-                                                <textarea name="description" rows="5" class="form-control" placeholder="SEO 描述"></textarea>
+                                                <textarea name="seoDescription" rows="5" class="form-control" placeholder="SEO 描述"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -107,6 +107,67 @@
     <script src="https://cdn.bootcss.com/bootstrap-fileinput/4.3.5/js/fileinput.min.js"></script>
     {{--<script src="/Static/Fileinput/js/locales/zh.js"></script>--}}
     <script src="https://cdn.bootcss.com/bootstrap-fileinput/4.3.5/js/locales/zh.min.js"></script>
+    <script type="text/javascript">
+        $().ready(function () {
+            $('#artForm').bootstrapValidator({
+                fields: {
+                    title: {
+                        validators: {
+                            notEmpty: {
+                                message: '文章标题不能为空'
+                            }
+                        }
+                    },
+                    content: {
+                        validators: {
+                            notEmpty: {
+                                message: '文章内容不能为空'
+                            }
+                        }
+                    }
+                }
+            });
+
+        });
+        $("#artForm").submit(function(ev){ev.preventDefault();});
+        $("button[type=button]").click(function () {
+            var bootstrapValidator = $("#artForm").data('bootstrapValidator');
+            bootstrapValidator.validate();
+            if(!bootstrapValidator.isValid()){
+                return;
+            }
+
+            $.ajax({
+                url: '/admin/toAddArt',
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    article_title: $('input[name=title]').val(),
+                    top: $('input[name=top]:checked') ? 1 : 0,
+                    article_status: $(this).attr('value') ,
+                    thumb: $('input[name=bannerPic]').val(),
+                    content: $('textarea[name=content]').val(),
+                    cat_id: $('select[name=category]:selected').val(),
+                    seo_keyword: $("input[name=seoKeyword]").val() ? 1 : 0,
+                    seo_title: $('input[name=seoTitle]').val(),
+                    seo_description: $('textarea[name=seoDescription]').val()
+                },
+                success: function (data) {
+                    if (data['status'] ==1) {
+                        notify('success' , data['msg']);
+                    }else if (data['status'] == 0) {
+                        notify('error' , data['msg']);
+                    }else {
+                        notify('error' , '服务器错误，请稍后重试');
+                    }
+                },
+                error: function () {
+                    notify('error' , '服务器错误，请稍后重试');
+                }
+            });
+        });
+
+    </script>
     <script>
 
         $("#uploadBanner").fileinput({
