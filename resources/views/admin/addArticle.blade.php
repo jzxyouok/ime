@@ -147,7 +147,7 @@
                     article_status: $(this).attr('value') ,
                     thumb: $('input[name=bannerPic]').val(),
                     content: $('textarea[name=content]').val(),
-                    cat_id: $('select[name=category]:selected').val(),
+                    cat_id: $('select[name=category]').val(),
                     seo_keyword: $("input[name=seoKeyword]").val() ? 1 : 0,
                     seo_title: $('input[name=seoTitle]').val(),
                     seo_description: $('textarea[name=seoDescription]').val()
@@ -206,10 +206,9 @@
         var editor = new wangEditor('articleEditor');
 
         // 上传图片
-        editor.config.uploadImgUrl = '/upload';
+        editor.config.uploadImgUrl = '/admin/uploadArticlePic';
         editor.config.uploadParams = {
-            // token1: 'abcde',
-            // token2: '12345'
+             _token: '{{ csrf_token() }}',
         };
         editor.config.uploadHeaders = {
             // 'Accept' : 'text/x-json'

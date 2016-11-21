@@ -23,12 +23,12 @@ class CreateArticlesTable extends Migration
             $table->tinyInteger('top')->default(0)->comment('文章置顶');
             $table->string('thumb')->default('')->comment('文章缩略图');
             $table->integer('author')->comment('作者');
-            $table->string('content')->index()->comment('文章内容');
+            $table->longText('content')->comment('文章内容');
             $table->string('seo_title')->default('')->index()->comment('SEO 标题');
             $table->string('seo_keyword')->default('')->index()->comment('SEO 关键词');
             $table->string('seo_description')->default('')->index()->comment('SEO 描述');
             $table->tinyInteger('article_status')->default(0)->comment('文章状态');
-            $table->integer('deleted_at')->default(0)->unsigned();
+            $table->integer('deleted_at')->nullable()->unsigned();
             $table->integer('created_at')->unsigned();
             $table->integer('updated_at')->unsigned();
         });

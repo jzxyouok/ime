@@ -10,7 +10,11 @@ class ImageApi{
     public $Error = "";
 
     public function AjaxReturnImageUrl() {
-        return Response::json([
+//        return Response::json([
+//            'status'    =>  $this -> Status,
+//            'url'       =>  $this -> ImageUrl,
+//        ]);
+        return json_encode([
             'status'    =>  $this -> Status,
             'url'       =>  $this -> ImageUrl,
         ]);

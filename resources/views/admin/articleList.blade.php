@@ -26,329 +26,47 @@
                                 <th data-field="actions" class="td-actions text-right" data-events="operateEvents" data-formatter="operateFormatter">操作</th>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td>1</td>
-                                    <td>音乐</td>
-                                    <td>$36,738</td>
-                                    <td>Niger</td>
-                                    <td>15:57:23 16.8.19</td>
-                                    <td>
-                                        <button rel="tooltip" title="草稿" class="btn btn-warning btn-xs btn-fill btn-round">
+                                {{--<tr>--}}
+                                    {{--<td></td>--}}
+                                    {{--<td>2</td>--}}
+                                    {{--<td>Minerva Hooper</td>--}}
+                                    {{--<td>$23,789</td>--}}
+                                    {{--<td>Curaçao</td>--}}
+                                    {{--<td>15:57:23 16.8.19</td>--}}
+                                    {{--<td>--}}
+                                        {{--<button class="btn btn-info btn-xs btn-fill btn-round">--}}
+                                            {{--<span class="btn-label">--}}
+                                            {{--<i class="fa fa-check-circle"></i>--}}
+                                            {{--</span>--}}
+                                            {{--发布--}}
+                                        {{--</button>--}}
+                                    {{--</td>--}}
+                                    {{--<td></td>--}}
+                                {{--</tr>--}}
+                                @foreach($article as $value)
+                                    <tr>
+                                        <td></td>
+                                        <td>{{ $value -> id }}</td>
+                                        <td>{{ $value -> article_title }}</td>
+                                        <td>{{ $value -> cat_name }}</td>
+                                        <td>{{ $value -> author }}</td>
+                                        <td>{{ $value -> updated_at }}</td>
+                                        <td>
+                                            <button rel="tooltip" title="{{ $value -> article_status_name }}" class="btn @if($value -> article_status == 0) btn-success @elseif($value -> article_status == 1) btn-warning @endif btn-xs btn-fill btn-round">
                                             <span class="btn-label">
-                                                <i class="fa fa-warning"></i>
+                                                @if($value -> article_status == 0)
+                                                    <i class="fa fa-check-circle"></i>
+                                                @elseif($value -> article_status == 1)
+                                                    <i class="fa fa-warning"></i>
+                                                @endif
+
                                             </span>
-                                            草稿
-                                        </button>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>2</td>
-                                    <td>Minerva Hooper</td>
-                                    <td>$23,789</td>
-                                    <td>Curaçao</td>
-                                    <td>15:57:23 16.8.19</td>
-                                    <td>
-                                        <button class="btn btn-info btn-xs btn-fill btn-round">
-                                            <span class="btn-label">
-                                            <i class="fa fa-check-circle"></i>
-                                            </span>
-                                            发布
-                                        </button>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>3</td>
-                                    <td>Sage Rodriguez</td>
-                                    <td>$56,142</td>
-                                    <td>Netherlands</td>
-                                    <td>Baileux</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-xs btn-fill btn-round">
-                                            <span class="btn-label">
-                                                <i class="fa fa-warning"></i>
-                                            </span>
-                                            草稿
-                                        </button>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>4</td>
-                                    <td>Philip Chaney</td>
-                                    <td>$38,735</td>
-                                    <td>Korea, South</td>
-                                    <td>Overland Park</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-xs btn-fill btn-round">
-                                            <span class="btn-label">
-                                                <i class="fa fa-warning"></i>
-                                            </span>
-                                            草稿
-                                        </button>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>5</td>
-                                    <td>Doris Greene</td>
-                                    <td>$63,542</td>
-                                    <td>Malawi</td>
-                                    <td>Feldkirchen in Kärnten</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-xs btn-fill btn-round">
-                                            <span class="btn-label">
-                                                <i class="fa fa-warning"></i>
-                                            </span>
-                                            草稿
-                                        </button>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>6</td>
-                                    <td>Mason Porter</td>
-                                    <td>$78,615</td>
-                                    <td>Chile</td>
-                                    <td>Gloucester</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-xs btn-fill btn-round">
-                                            <span class="btn-label">
-                                                <i class="fa fa-warning"></i>
-                                            </span>
-                                            草稿
-                                        </button>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>7</td>
-                                    <td>Alden Chen</td>
-                                    <td>$63,929</td>
-                                    <td>Finland</td>
-                                    <td>Gary</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-xs btn-fill btn-round">
-                                            <span class="btn-label">
-                                                <i class="fa fa-warning"></i>
-                                            </span>
-                                            草稿
-                                        </button>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>8</td>
-                                    <td>Colton Hodges</td>
-                                    <td>$93,961</td>
-                                    <td>Nicaragua</td>
-                                    <td>Nicaragua</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-xs btn-fill btn-round">
-                                            <span class="btn-label">
-                                                <i class="fa fa-warning"></i>
-                                            </span>
-                                            草稿
-                                        </button>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>9</td>
-                                    <td>Illana Nelson</td>
-                                    <td>$56,142</td>
-                                    <td>$56,142</td>
-                                    <td>Heard Island</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-xs btn-fill btn-round">
-                                            <span class="btn-label">
-                                                <i class="fa fa-warning"></i>
-                                            </span>
-                                            草稿
-                                        </button>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>10</td>
-                                    <td>Nicole Lane</td>
-                                    <td>Nicole Lane</td>
-                                    <td>$93,148</td>
-                                    <td>Cayman Islands</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-xs btn-fill btn-round">
-                                            <span class="btn-label">
-                                                <i class="fa fa-warning"></i>
-                                            </span>
-                                            草稿
-                                        </button>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>11</td>
-                                    <td>Chaim Saunders</td>
-                                    <td>$5,502</td>
-                                    <td>Romania</td>
-                                    <td>Romania</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-xs btn-fill btn-round">
-                                            <span class="btn-label">
-                                                <i class="fa fa-warning"></i>
-                                            </span>
-                                            草稿
-                                        </button>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>12</td>
-                                    <td>Josiah Simon</td>
-                                    <td>$50,265</td>
-                                    <td>$50,265</td>
-                                    <td>Christmas Island</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-xs btn-fill btn-round">
-                                            <span class="btn-label">
-                                                <i class="fa fa-warning"></i>
-                                            </span>
-                                            草稿
-                                        </button>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>13</td>
-                                    <td>Ila Poole</td>
-                                    <td>Ila Poole</td>
-                                    <td>$67,413</td>
-                                    <td>Montenegro</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-xs btn-fill btn-round">
-                                            <span class="btn-label">
-                                                <i class="fa fa-warning"></i>
-                                            </span>
-                                            草稿
-                                        </button>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>14</td>
-                                    <td>Shana Mejia</td>
-                                    <td>Shana Mejia</td>
-                                    <td>$58,566</td>
-                                    <td>Afghanistan</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-xs btn-fill btn-round">
-                                            <span class="btn-label">
-                                                <i class="fa fa-warning"></i>
-                                            </span>
-                                            草稿
-                                        </button>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>15</td>
-                                    <td>Lana Ryan</td>
-                                    <td>$64,151</td>
-                                    <td>$64,151</td>
-                                    <td>Martinique</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-xs btn-fill btn-round">
-                                            <span class="btn-label">
-                                                <i class="fa fa-warning"></i>
-                                            </span>
-                                            草稿
-                                        </button>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>16</td>
-                                    <td>Daquan Bender</td>
-                                    <td>Daquan Bender</td>
-                                    <td>$91,906</td>
-                                    <td>Sao Tome and Principe</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-xs btn-fill btn-round">
-                                            <span class="btn-label">
-                                                <i class="fa fa-warning"></i>
-                                            </span>
-                                            草稿
-                                        </button>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>17</td>
-                                    <td>17</td>
-                                    <td>Connor Wagner</td>
-                                    <td>$86,537</td>
-                                    <td>Germany</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-xs btn-fill btn-round">
-                                            <span class="btn-label">
-                                                <i class="fa fa-warning"></i>
-                                            </span>
-                                            草稿
-                                        </button>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>18</td>
-                                    <td>18</td>
-                                    <td>Boris Horton</td>
-                                    <td>$35,094</td>
-                                    <td>Laos</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-xs btn-fill btn-round">
-                                            <span class="btn-label">
-                                                <i class="fa fa-warning"></i>
-                                            </span>
-                                            草稿
-                                        </button>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>19</td>
-                                    <td>Winifred Ryan</td>
-                                    <td>$64,436</td>
-                                    <td>Ireland</td>
-                                    <td>Ireland</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-xs btn-fill btn-round">
-                                            <span class="btn-label">
-                                                <i class="fa fa-warning"></i>
-                                            </span>
-                                            草稿
-                                        </button>
-                                    </td>
-                                    <td></td>
-                                </tr>
+                                                {{ $value -> article_status_name }}
+                                            </button>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div><!--  end card  -->

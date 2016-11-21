@@ -12,7 +12,7 @@ use Request;
 class Link extends Model
 {
 
-//    use Searchable;
+    use Searchable;
 
     public $dateFormat = "U";
 

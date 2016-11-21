@@ -282,29 +282,29 @@
 {{--<script src="/Static/admin/js/demo.js"></script>--}}
 <script src="/js/jquery.pjax.js"></script>
 <script src="https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
-<script>
-    (function ($) {
-        var ime = {
-            init: function () {
-                $(document).pjax('a:not(a[target="_blank"])', '#content', {
-                    timeout: 1600,
-                    maxCacheLength: 500
-                });
-                $(document).on('pjax:start', function() {
-                    NProgress.start();
-                });
-                $(document).on('pjax:end', function() {
-                    NProgress.done();
-                });
-            }
-        };
-        window.ime = ime;
-    })(jQuery);
-    $(document).ready(function()
-    {
-        ime.init();
-    });
-</script>
+{{--<script>--}}
+    {{--(function ($) {--}}
+        {{--var ime = {--}}
+            {{--init: function () {--}}
+                {{--$(document).pjax('a:not(a[target="_blank"])', '#content', {--}}
+                    {{--timeout: 1600,--}}
+                    {{--maxCacheLength: 500--}}
+                {{--});--}}
+                {{--$(document).on('pjax:start', function() {--}}
+                    {{--NProgress.start();--}}
+                {{--});--}}
+                {{--$(document).on('pjax:end', function() {--}}
+                    {{--NProgress.done();--}}
+                {{--});--}}
+            {{--}--}}
+        {{--};--}}
+        {{--window.ime = ime;--}}
+    {{--})(jQuery);--}}
+    {{--$(document).ready(function()--}}
+    {{--{--}}
+        {{--ime.init();--}}
+    {{--});--}}
+{{--</script>--}}
 
 @yield('JavaScript')
 

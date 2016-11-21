@@ -21,6 +21,7 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'login'], function () {
     Route::get('art' , 'Admin\ArticleController@articleList');
     Route::post('toAddArt' , 'Admin\ArticleController@toAddArt');
     Route::post('uploadPic' , 'Admin\ArticleController@uploadBanner');
+    Route::post('uploadArticlePic' , 'Admin\ArticleController@uploadPic');
     Route::get('cat' , 'Admin\CatController@catList');
     Route::get('addCat/{catPid?}' , 'Admin\CatController@addCat');
     Route::get('editCat/{catId}', 'Admin\CatController@editCat');

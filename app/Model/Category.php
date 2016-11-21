@@ -10,7 +10,7 @@ use Laravel\Scout\Searchable;
 
 class Category extends Model
 {
-//    use Searchable;
+    use Searchable;
 
     public $dateFormat = "U";
     
