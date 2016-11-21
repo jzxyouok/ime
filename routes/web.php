@@ -19,6 +19,11 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'login'], function () {
     Route::get('system' , 'Admin\SystemController@index');
     Route::get('addArt' , 'Admin\ArticleController@addArticle');
     Route::get('art' , 'Admin\ArticleController@articleList');
+    Route::get('editArt/{artId}' , 'Admin\ArticleController@editArt');
+    Route::get('dustbin' , 'Admin\ArticleController@dustbin');
+    Route::get('toDustbin' , 'Admin\ArticleController@toDustbin');
+    Route::get('toDeleteArt' , 'Admin\ArticleController@toDelete');
+    Route::get('toDeleteDustbin' , 'Admin\ArticleController@toDeleteDustbin');
     Route::post('toAddArt' , 'Admin\ArticleController@toAddArt');
     Route::post('uploadPic' , 'Admin\ArticleController@uploadBanner');
     Route::post('uploadArticlePic' , 'Admin\ArticleController@uploadPic');
@@ -54,6 +59,5 @@ Route::get('redis' , 'Admin\RedisController@index');
 //});
 
 Route::get('test' , function () {
-    $link = new App\Model\Link();
-    return $link -> select();
+    dd(\Illuminate\Support\Facades\Artisan::call('key:generate'));
 });

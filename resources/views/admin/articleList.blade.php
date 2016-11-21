@@ -12,6 +12,7 @@
 
                             <div class="toolbar">
                                 {{--Here you can write extra buttons/actions for the toolbar --}}
+                                <a href="/admin/dustbin" class="btn" style="margin-right: 15px;">垃圾箱</a>
                             </div>
 
                             <table id="bootstrap-table" class="table">
@@ -26,23 +27,6 @@
                                 <th data-field="actions" class="td-actions text-right" data-events="operateEvents" data-formatter="operateFormatter">操作</th>
                                 </thead>
                                 <tbody>
-                                {{--<tr>--}}
-                                    {{--<td></td>--}}
-                                    {{--<td>2</td>--}}
-                                    {{--<td>Minerva Hooper</td>--}}
-                                    {{--<td>$23,789</td>--}}
-                                    {{--<td>Curaçao</td>--}}
-                                    {{--<td>15:57:23 16.8.19</td>--}}
-                                    {{--<td>--}}
-                                        {{--<button class="btn btn-info btn-xs btn-fill btn-round">--}}
-                                            {{--<span class="btn-label">--}}
-                                            {{--<i class="fa fa-check-circle"></i>--}}
-                                            {{--</span>--}}
-                                            {{--发布--}}
-                                        {{--</button>--}}
-                                    {{--</td>--}}
-                                    {{--<td></td>--}}
-                                {{--</tr>--}}
                                 @foreach($article as $value)
                                     <tr>
                                         <td></td>
@@ -69,6 +53,9 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            <div class="pull-right pagination">
+                                {{ $article->links() }}
+                            </div>
                         </div><!--  end card  -->
                     </div> <!-- end col-md-12 -->
                 </div> <!-- end row -->
@@ -83,10 +70,10 @@
         function operateFormatter(value, row, index) {
             return [
                 '<div class="table-icons">',
-                '<a rel="tooltip" title="垃圾箱" class="btn btn-simple btn-warning btn-icon table-action view" href="javascript:void(0)">',
+                '<a rel="tooltip" title="垃圾箱" class="btn btn-simple btn-warning btn-icon table-action dustbin" href="javascript:void(0)">',
                 '<i class="iconfont">&#xe656;</i>',
                 '</a>',
-                '<a rel="tooltip" title="编辑" class="btn btn-simple btn-info btn-icon table-action edit" href="javascript:void(0)">',
+                '<a rel="tooltip" title="编辑" class="btn btn-simple btn-info btn-icon table-action edit" href="/admin/editArt/'+ row.id +'">',
                 '<i class="iconfont">&#xe668;</i>',
                 '</a>',
                 '<a rel="tooltip" title="删除" class="btn btn-simple btn-danger btn-icon table-action remove" href="javascript:void(0)">',
@@ -98,23 +85,72 @@
 
         $().ready(function(){
             window.operateEvents = {
-                'click .view': function (e, value, row, index) {
-                    var info = JSON.stringify(row);
-
-                    swal('You click view icon, row: ', info);
-                    console.log(info);
-                },
-                'click .edit': function (e, value, row, index) {
-                    var info = JSON.stringify(row);
-
-                    swal('You click edit icon, row: ', info);
-                    console.log(info);
+                'click .dustbin': function (e, value, row, index) {
+                    swal({  title: "确定移至垃圾箱 ?",
+                        text: "文章移至垃圾箱，可在垃圾箱中恢复 !",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonClass: "btn btn-info btn-fill",
+                        confirmButtonText: "确定 !",
+                        cancelButtonClass: "btn btn-danger btn-fill",
+                        cancelButtonText: "取消",
+                        closeOnConfirm: false,
+                    },function(){
+                        $.ajax({
+                            url: '/admin/toDustbin',
+                            type: 'get',
+                            data: { id: row.id},
+                            success: function (data) {
+                                if (data['status']===1) {
+                                    notify('success' , data['msg']);
+                                    $table.bootstrapTable('remove', {
+                                        field: 'id',
+                                        values: [row.id]
+                                    });
+                                }else if (data['status']===0) {
+                                    notify('error' , data['msg']);
+                                }else {
+                                    notify('error' , '服务器错误，请稍后请重试 ！');
+                                }
+                            },
+                            error: function () {
+                                notify('error' , '服务器错误，请稍后请重试 ！');
+                            }
+                        });
+                    });
                 },
                 'click .remove': function (e, value, row, index) {
-                    console.log(row);
-                    $table.bootstrapTable('remove', {
-                        field: 'id',
-                        values: [row.id]
+                    swal({  title: "确定删除 ?",
+                        text: "文章将会被永久删除，此操作不可逆 !",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonClass: "btn btn-info btn-fill",
+                        confirmButtonText: "确定 !",
+                        cancelButtonClass: "btn btn-danger btn-fill",
+                        cancelButtonText: "取消",
+                        closeOnConfirm: false,
+                    },function(){
+                        $.ajax({
+                            url: '/admin/toDeleteArt',
+                            type: 'get',
+                            data: { id: row.id},
+                            success: function (data) {
+                                if (data['status']===1) {
+                                    notify('success' , data['msg']);
+                                    $table.bootstrapTable('remove', {
+                                        field: 'id',
+                                        values: [row.id]
+                                    });
+                                }else if (data['status']===0) {
+                                    notify('error' , data['msg']);
+                                }else {
+                                    notify('error' , '服务器错误，请稍后请重试 ！');
+                                }
+                            },
+                            error: function () {
+                                notify('error' , '服务器错误，请稍后请重试 ！');
+                            }
+                        });
                     });
                 }
             };

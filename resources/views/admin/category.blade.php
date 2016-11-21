@@ -9,7 +9,7 @@
 
                             <div class="toolbar">
                                 {{--Here you can write extra buttons/actions for the toolbar --}}
-                                <button class="btn btn-round" style="margin-right: 15px;">删除</button>
+                                <button class="btn" style="margin-right: 15px;">删除</button>
                             </div>
 
                             <table id="bootstrap-table" class="table" id="Category">
