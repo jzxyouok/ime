@@ -12,6 +12,9 @@
 */
 
 Route::get('/', 'Home\IndexController@index');
+Route::get('art/{catId}' , 'Home\ArticleController@index');
+Route::get('link' , 'Home\LinkController@index');
+Route::get('msg' , 'Home\MsgController@index');
 
 Route::group(['prefix' => 'admin' , 'middleware' => 'login'], function () {
     Route::get('profile' , 'Admin\ProfileController@index');
