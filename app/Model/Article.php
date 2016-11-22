@@ -48,6 +48,19 @@ class Article extends Model
         return $article -> forceDelete();
     }
 
+    public function restoreArt() {
+
+        $artId = Request::get('id');
+        $article = self::onlyTrashed() -> find($artId);
+        $article -> article_status = 1;
+        if ($article -> save()) {
+
+            return $article -> restore();
+        }else{
+            return false;
+        }
+    }
+
     public function selectArt() {
         return self::join('users' , 'articles.author' , '=' , 'users.id')
             ->join('categories' , 'articles.cat_id' , '=' , 'categories.id')

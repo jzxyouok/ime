@@ -18,7 +18,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>用户名</label>
-                                                <input type="text" class="form-control" disabled placeholder="Company" value="tizips">
+                                                <input type="text" class="form-control" disabled value="{{ $user -> name }}">
                                             </div>
                                         </div>
                                     </div>
@@ -27,7 +27,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>笔名</label>
-                                                <input type="text" class="form-control" />
+                                                <input type="text" class="form-control" value="{{ $user -> pen_name or '' }}" />
                                             </div>
                                         </div>
                                     </div>
@@ -36,16 +36,17 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>头像</label>
-                                                <input type="file" class="file" id="uploadThumb" multiple>
+                                                <input type="file" class="file" id="uploadThumb" name="uploadThumb" multiple>
                                                 <div id="ErrorBlock" class="help-block"></div>
                                             </div>
+                                            <input type="hidden" name="thumb" value="{{ $user -> thumb }}">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>邮箱</label>
-                                                <input type="text" class="form-control" placeholder="***@example.com" />
+                                                <input type="text" class="form-control" value="{{ $user -> email or '' }}" placeholder="***@example.com" />
                                             </div>
                                         </div>
                                     </div>
@@ -54,7 +55,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Github</label>
-                                                <input type="text" class="form-control" placeholder="https://github.com/tizips/" />
+                                                <input type="text" class="form-control" value="{{ $user -> github or '' }}" placeholder="https://github.com/tizips/" />
                                             </div>
                                         </div>
                                     </div>
@@ -63,7 +64,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>个人简介</label>
-                                                <textarea rows="5" class="form-control" placeholder="请一句话介绍你自己，大部分情况下会在你的头像和名字旁边显示" value="Mike"></textarea>
+                                                <textarea rows="5" class="form-control" placeholder="请一句话介绍你自己，大部分情况下会在你的头像和名字旁边显示">{{ $user -> content or '' }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -84,7 +85,7 @@
                                     <a href="#">
                                         <img class="avatar border-gray" src="/Static/admin/images/default-avatar.png" alt="..."/>
 
-                                        <h4 class="title">Tania Andrew<br />
+                                        <h4 class="title">{{ $user -> name }}<br />
                                             <small>michael24</small>
                                         </h4>
                                     </a>
@@ -96,8 +97,7 @@
                             </div>
                             <hr>
                             <div class="text-center">
-                                <button href="#" class="btn btn-simple"><i class="fa fa-github"></i></button>
-
+                                <button href="{{ $user -> github or '#' }}" class="btn btn-simple"><i class="fa fa-github"></i></button>
                             </div>
                         </div>
                     </div>
@@ -114,21 +114,25 @@
 
         $("#uploadThumb").fileinput({
             language: 'zh',
-            uploadUrl: '#', // you must set a valid URL here else you will get an error
+            uploadUrl: '/admin/profile/uploadThumb', // you must set a valid URL here else you will get an error
             allowedFileExtensions : ['jpg', 'png','gif'],
             elErrorContainer: '#ErrorBlock',
             overwriteInitial: false,
             showPreview: false,
             maxFileSize: 400,
-            maxFilesNum: 10,
+            maxFilesNum: 1,
+            uploadExtraData: {
+                _token: '{{ csrf_token() }}'
+            },
             slugCallback: function(filename) {
                 return filename.replace('(', '_').replace(']', '_');
             }
+        }).on('fileuploaded' , function (e, data) {
+            if (data.response['status'] ==0) {
+                $("input[name=thumb]").val(data.response['url']);
+            }
         });
         /*
-         $("#test-upload").on('fileloaded', function(event, file, previewId, index) {
-         alert('i = ' + index + ', id = ' + previewId + ', file = ' + file.name);
-         });
          图片上传完成之后的回调函数
          */
     </script>

@@ -15,6 +15,7 @@ Route::get('/', 'Home\IndexController@index');
 
 Route::group(['prefix' => 'admin' , 'middleware' => 'login'], function () {
     Route::get('profile' , 'Admin\ProfileController@index');
+    Route::post('profile/uploadThumb' , 'Admin\ProfileController@uploadThumb');
     Route::get('editPwd' , 'Admin\ProfileController@editPwd');
     Route::get('system' , 'Admin\SystemController@index');
     Route::get('addArt' , 'Admin\ArticleController@addArticle');
@@ -25,6 +26,8 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'login'], function () {
     Route::get('toDeleteArt' , 'Admin\ArticleController@toDelete');
     Route::get('toDeleteDustbin' , 'Admin\ArticleController@toDeleteDustbin');
     Route::post('toAddArt' , 'Admin\ArticleController@toAddArt');
+    Route::post('toUpdateArt' , 'Admin\ArticleController@toUpdateArt');
+    Route::get('toRestoreArt' , 'Admin\ArticleController@toRestoreArt');
     Route::post('uploadPic' , 'Admin\ArticleController@uploadBanner');
     Route::post('uploadArticlePic' , 'Admin\ArticleController@uploadPic');
     Route::get('cat' , 'Admin\CatController@catList');

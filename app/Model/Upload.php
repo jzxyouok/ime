@@ -16,6 +16,8 @@ class Upload extends Model
 
     public $field = 'image';
 
+    public $thumb = false;
+
     public $fileTitle = '';
 
     public $path = '/upload/article';

@@ -9,7 +9,7 @@
             <form id="artForm" class="form-horizontal">
                 <div class="col-md-8">
                     <div class="card">
-                        <div class="header">撰写新文章</div>
+                        <div class="header">编辑文章</div>
                         <div class="content">
                             <div class="form-group">
                                 <label class="col-md-2 control-label">标题</label>
@@ -141,6 +141,7 @@
                 type: 'POST',
                 data: {
                     _token: '{{ csrf_token() }}',
+                    id: {{ $article -> id }},
                     article_title: $('input[name=title]').val(),
                     top: $('input[name=top]:checked').val() ? 0 : 1,
                     article_status: $(this).attr('value') ,

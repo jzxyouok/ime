@@ -45,22 +45,23 @@ class ArticleController extends Controller
     }
 
     public function toUpdateArt() {
+
         $Api = new Api();
         $article = new Article();
 
-        $validatorResult = $article -> validatorArticle();
-
-        if (!empty($validatorResult)) {
-            return $validatorResult;
+        if (!$article -> validatorArtExists(Request::get('id'))) {
+            $Api -> Message = '文章不存在';
+            return $Api -> AjaxReturn();
         }
 
         $art = $article -> updateArt();
         if (empty($art)) {
-            $Api -> Message = '文章保存失败';
+            $Api -> Message = '修改失败';
             return $Api -> AjaxReturn();
         }
         if (Request::get('article_status') == 2) {
-            if (!$art -> delete()) {
+            $artInfo = $article -> findArt(Request::get('id'));
+            if (!$artInfo -> delete()) {
                 $Api -> Message = '移至垃圾箱失败';
             }else{
                 $Api -> Status = 1;
@@ -73,7 +74,7 @@ class ArticleController extends Controller
         }else{
 
             $Api -> Status = 1;
-            $Api -> Message = '添加成功';
+            $Api -> Message = '修改成功';
         }
 
         return $Api -> AjaxReturn();
@@ -96,6 +97,7 @@ class ArticleController extends Controller
         return $Api -> AjaxReturn();
 
     }
+
     public function toDelete() {
 
         $Api = new Api();
@@ -110,6 +112,23 @@ class ArticleController extends Controller
         }
         $Api -> Status = 1;
         $Api -> Message = '删除成功';
+        return $Api -> AjaxReturn();
+    }
+
+    public function toRestoreArt() {
+
+        $Api = new Api();
+        $artId = Request::get('id');
+        $article = new Article();
+        if (!$article -> validatorDustbinExists($artId)) {
+            $Api -> Message = '垃圾箱中不存在此文章';
+            return $Api -> AjaxReturn();
+        }
+        if (!$article -> restoreArt()) {
+            $Api -> Message = '还原失败';
+        }
+        $Api -> Status = 1;
+        $Api -> Message = '还原成功';
         return $Api -> AjaxReturn();
     }
     

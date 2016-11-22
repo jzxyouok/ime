@@ -87,7 +87,7 @@
             window.operateEvents = {
                 'click .dustbin': function (e, value, row, index) {
                     swal({  title: "确定移至垃圾箱 ?",
-                        text: "文章移至垃圾箱，可在垃圾箱中恢复 !",
+                        text: "文章移至垃圾箱 ，垃圾箱中的文章不能进行编辑操作，可在垃圾箱中恢复 !",
                         type: "warning",
                         showCancelButton: true,
                         confirmButtonClass: "btn btn-info btn-fill",

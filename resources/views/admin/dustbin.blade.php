@@ -54,8 +54,8 @@
 
         function operateFormatter(value, row, index) {
             return [
-                '<a rel="tooltip" title="编辑" class="btn btn-simple btn-info btn-icon table-action edit" href="javascript:void(0)">',
-                '<i class="iconfont">&#xe668;</i>',
+                '<a rel="tooltip" title="还原" class="btn btn-simple btn-info btn-icon table-action edit" href="javascript:void(0)">',
+                '<i class="iconfont">&#xe6ae;</i>',
                 '</a>',
                 '<a rel="tooltip" title="彻底删除" class="btn btn-simple btn-danger btn-icon table-action remove" href="javascript:void(0)">',
                 '<i class="iconfont">&#xe6b9;</i>',
@@ -67,10 +67,38 @@
         $().ready(function(){
             window.operateEvents = {
                 'click .edit': function (e, value, row, index) {
-                    var info = JSON.stringify(row);
-
-                    swal('You click edit icon, row: ', info);
-                    console.log(info);
+                    swal({  title: "确定还原文章 ?",
+                        text: "文章将会被移出垃圾箱，可以进行编辑操作 !",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonClass: "btn btn-info btn-fill",
+                        confirmButtonText: "确定 !",
+                        cancelButtonClass: "btn btn-danger btn-fill",
+                        cancelButtonText: "取消",
+                        closeOnConfirm: false,
+                    },function(){
+                        $.ajax({
+                            url: '/admin/toRestoreArt',
+                            type: 'get',
+                            data: { id: row.id},
+                            success: function (data) {
+                                if (data['status']===1) {
+                                    notify('success' , data['msg']);
+                                    $table.bootstrapTable('remove', {
+                                        field: 'id',
+                                        values: [row.id]
+                                    });
+                                }else if (data['status']===0) {
+                                    notify('error' , data['msg']);
+                                }else {
+                                    notify('error' , '服务器错误，请稍后请重试 ！');
+                                }
+                            },
+                            error: function () {
+                                notify('error' , '服务器错误，请稍后请重试 ！');
+                            }
+                        });
+                    });
                 },
                 'click .remove': function (e, value, row, index) {
                     swal({  title: "确定删除 ?",
