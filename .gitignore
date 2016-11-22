@@ -18,6 +18,8 @@ bootstrap/cache/*
 
 .idea/
 
+public/upload/
+
 public/npm-debug.log
 
 [core]
