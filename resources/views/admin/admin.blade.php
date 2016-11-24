@@ -54,11 +54,11 @@
         <div class="sidebar-wrapper">
             <div class="user">
                 <div class="photo">
-                    <img src="/Static/admin/images/default-avatar.png" />
+                    <img src="{{ $user -> thumb }}" />
                 </div>
                 <div class="info">
                     <a data-toggle="collapse" href="#collapseExample" class="collapsed">
-                        tizips
+                        {{ $user -> name }}
                         <b class="caret"></b>
                     </a>
                     <div class="collapse" id="collapseExample">

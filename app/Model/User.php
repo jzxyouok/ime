@@ -17,6 +17,45 @@ class User extends Model
         return $userInfo;
     }
 
+    public function findUserById($userId) {
+
+        $userInfo = self::find($userId);
+        return $userInfo;
+    }
+
+    public function updateUser() {
+        $user = Request::except('_token');
+        $userInfo = self::find($user['id']);
+        foreach ($user as $key => $value) {
+            $userInfo -> $key = $value;
+        }
+        return $userInfo -> save();
+    }
+
+    public function updateValidator() {
+
+        $loginApi = new Api();
+        $validator = Validator::make(Request::except('_token'), [
+            'id'              =>      'numeric|exists:users,id',
+            'pen_name'          =>      'between:4,20|unique:users,pen_name',
+            'thumb'             =>      'exists:uploads,file_url',
+            'email'             =>      'email',
+            'github'            =>      'url'
+        ],[
+            'id.numeric'    =>      '用户 id 格式错误',
+            'id.exists'    =>      '用户不存在',
+            'pen_name.between'      =>      '笔名长度应介于 4 - 20 之间',
+            'pen_name.unique'      =>      '笔名已存在',
+            'thumb.image'       =>      '缩略图不存在',
+            'email.image'       =>      'Email 格式错误',
+            'github.url'       =>      'github 格式错误'
+        ]);
+        if ($validator -> fails()) {
+            $loginApi -> Message = $validator -> errors() -> first();
+            return $loginApi -> AjaxReturn();
+        }
+    }
+
     public function autoValidator() {
         $loginApi = new Api();
         $validator = Validator::make(Request::except('_token') , [

@@ -181,38 +181,38 @@
             <script type="text/javascript">
                 $().ready(function(){
 
-                    var $validator = $("#wizardForm").validate({
-                        rules: {
-                            email: {
-                                required: true,
-                                email: true,
-                                minlength: 5
-                            },
-                            first_name: {
-                                required: false,
-                                minlength: 5
-                            },
-                            last_name: {
-                                required: false,
-                                minlength: 5
-                            },
-                            website: {
-                                required: true,
-                                minlength: 5,
-                                url: true
-                            },
-                            framework: {
-                                required: false,
-                                minlength: 4
-                            },
-                            cities: {
-                                required: true
-                            },
-                            price:{
-                                number: true
-                            }
-                        }
-                    });
+//                    var $validator = $("#wizardForm").validate({
+//                        rules: {
+//                            email: {
+//                                required: true,
+//                                email: true,
+//                                minlength: 5
+//                            },
+//                            first_name: {
+//                                required: false,
+//                                minlength: 5
+//                            },
+//                            last_name: {
+//                                required: false,
+//                                minlength: 5
+//                            },
+//                            website: {
+//                                required: true,
+//                                minlength: 5,
+//                                url: true
+//                            },
+//                            framework: {
+//                                required: false,
+//                                minlength: 4
+//                            },
+//                            cities: {
+//                                required: true
+//                            },
+//                            price:{
+//                                number: true
+//                            }
+//                        }
+//                    });
 
 
 
@@ -223,12 +223,18 @@
                         nextSelector: '.btn-next',
                         previousSelector: '.btn-back',
                         onNext: function(tab, navigation, index) {
-                            var $valid = $('#wizardForm').valid();
+//                            var $valid = $('#wizardForm').valid();
 
-                            if(!$valid) {
-                                $validator.focusInvalid();
-                                return false;
+//                            if(!$valid) {
+//                                $validator.focusInvalid();
+//                                return false;
+//                            }
+                            var $current = index+1;
+
+                            if ($current == 2) {
+//                                return false;
                             }
+                            notify('success' , $current);
                         },
                         onInit : function(tab, navigation, index){
 

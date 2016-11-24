@@ -2,118 +2,198 @@
 
 @section('Content')
     <div class="pjax">
-        <div id="bg" style="background-image: url(http://oby8evr99.bkt.clouddn.com/wp-content/uploads/2016/10/bg.jpg?imageView2/0/w/1560/interlace/1);">
-        </div>
-        <div id="main" class="animated fadeIn">
-
-            <header id="header">
-                <div class="logo">
-                    <a href="{{ config('site.web_url') }}"><img src="http://jianbi.me/wp-content/themes/Reading%20notes/logo.png"/><!--札记--></a>
-                    <p class="description"></p>
-                </div>
-                <div class="social-links">
-                    <ul>
-                        <li><a href="https://github.com/wenlong002" target="_blank"><i class="fa fa-github"></i></a></li>
-                        <li><a href="http://weibo.com/239320789" target="_blank"><i class="fa fa-weibo"></i></a></li>
-                        <li><a href="https://twitter.com/icek1ng_" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                    </ul>
-                </div>
-            </header>
+        <main id="main">
             <section id="slide">
-                <img src="https://ws4.sinaimg.cn/large/e8f236c4jw1f9tdfdwz7zj21jk0dwdl4.jpg"/></li>
+                <img src="https://ws4.sinaimg.cn/large/e8f236c4jw1f9tdfdwz7zj21jk0dwdl4.jpg">
             </section>
-            <section class="blockGroup container">
-                <article class="post single" itemscope itemtype="http://schema.org/BlogPosting">
-                    <div class="links">
-                        <h3 class="link-title">好基友</h3>
-                        <ul class="link-items fontSmooth">
-                            <li class="link-item"><a class="link-item-inner effect-apollo" title="为何我这么帅" href="http://lomoclub.cc/" target="_blank">LomoCLub</a>
-                                <div class="linkdes">素材论坛</div>
-                            </li>
-                            <li class="link-item"><a class="link-item-inner effect-apollo" title="为何我这么帅" href="http://shouer.me/" target="_blank">首尔一边城</a>
-                                <div class="linkdes">宛如智障</div>
-                            </li>
-                            <li class="link-item"><a class="link-item-inner effect-apollo" title="为何我这么帅" href="http://4b.lc/" target="_blank">元一</a>
-                                <div class="linkdes">年度最佳老司机</div>
-                            </li>
-                            <li class="link-item"><a class="link-item-inner effect-apollo" title="为何我这么帅" href="http://ims.im/" target="_blank">乐乎</a>
-                                <div class="linkdes">自娱自乐·不亦乐乎！</div>
-                            </li>
-                            <li class="link-item"><a class="link-item-inner effect-apollo" title="为何我这么帅" href="http://cocofive.cc/" target="_blank">小五</a>
-                                <div class="linkdes">写写自己的故事</div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="links">
-                        <h3 class="link-title">修复区</h3>
-                        <ul class="link-items fontSmooth">
-                            <li class="link-item"><a class="link-item-inner effect-apollo" title="为何我这么帅" href="/go/?url=https://nyun.me/" target="_blank">NYUN</a>
-                                <div class="linkdes">网站打不开·请修复</div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="meta">
-                        <p>— 于 2016年11月05 ，共写了 70 字；</p>
-                        <p>— 本文共有 1 个标签：</p>
-                    </div>
-                </article>
-                <section class="ending">
-                    <ul class="sns">
-                        <li class="weibo"><a href="http://weibo.com/239320789" target="_blank"><i class="fa fa-weibo"></i></a></li>
-                        <li class="github"><a href="https://github.com/wenlong002" target="_blank"><i class="fa fa-github"></i></a></li>
-                        <li class="twitter"><a href="https://twitter.com/icek1ng_" target="_blank"><i class="fa fa-twitter"></i></a></li>
+            <!--文章和页面-->
+            <article class="post_article" itemscope="" itemtype="http://schema.org/BlogPosting">
+                <section id="banner">
+                    <h1 itemprop="name headline" class="post_title">友情链接</h1>
+                    <ul class="info">
+                        <li>03月04日</li>
+                        <li>60条评论</li>
                     </ul>
-                    <div class="about">
-                        <a><img alt='' src='http://cn.gravatar.com/avatar/a09ea0098c2c0ddbcd9f3d3ceffb2683?s=80&#038;d=mm&#038;r=g' srcset='http://cn.gravatar.com/avatar/a09ea0098c2c0ddbcd9f3d3ceffb2683?s=160&amp;d=mm&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a>
-                        <span>浅喜似苍狗 深爱如长风</span>
-                    </div>
                 </section>
+                <p><meta name="robots" content="nofollow"/></p>
+                <p>
+                    <a href="http://www.guoguomiao.com">果果喵</a>
+                    <a href="http://moehentai.space/acg">moehentai社区</a>
+                    <a href="http://www.chen101.cn">柒爱博客</a>
+                    <a href="http://Hxyu.me">羽宝博客</a>
+                    <a href="http://www.tyd.me/">听雨博客</a>
+                    <a href="http://www.xxinn.cn/">小小驿站</a>
+                    <a href="http://199508.com/">太雄博客</a>
+                    <a href="http://www.blogtime.cc/">时光博客</a>
+                    <a href="http://liuxinggang.com/">刘兴刚博客</a>
+                    <a href="http://cocofive.cc/">那束陽光</a>
+                    <a href="http://tozero.cc/">那束陽光</a>
+                    <a href="http://anyuecm.cn/">小辉博客</a>
+                    <a href="http://www.aihoom.cn/">空白网络</a>
+                    <a href="http://xiaocp.com/%22%3E">阿佩博客</a>
+                    <a href="http://www.52din.vip/">Din资源分享</a>
+                    <a href="http://www.mouzhaibu.ml">某宅部</a>
+                    <a href="http://blog.bbs2.com/">字迹</a>
+                    <a href="http://www.xtkyy.cc/">夏天烤洋芋博客</a>
+                    <a href="http://loek.cc/">LOEK BLOG</a>
+                    <a href="http://yeyufan.cn/">夜与凡</a>
+                    <a href="http://www.dreamwings.cn">千千</a>
+                    <a href="http://nyun.me">NYUN</a>
+                    <a href="http://yeziting.com/">小叶自留地</a>
+                    <a href="http://www.zhangfupeng.com">张福鹏博客</a>
+                    <a href="http://www.idevs.cn/">设计笔记</a>
+                    <a href="http://hizip.net/">Hizip根据地</a>
+                    <a href="https://www.zyl.me/">ZYL的博客</a>
+                    <a href="http://www.xinqiuge.com/">信球哥</a>
+                    <a href="http://themebetter.com/">themebetter</a>
+                    <a href="http://www.jxgushihui.com/">精选故事网</a>
+                    <a href="http://lanyes.org/">蓝叶博客</a>
+                    <a href="http://www.liudm.cn/">轻风</a>
+                    <a href="http://www.sjk5.top/">收集控</a>
+                    <a href="http://5mx.net/">冷夜博客</a>
+                    <a href="http://www.siyochen.com/">陈昕妤SiyoChen</a>
+                    <a href="https://auauau.cn/">エース</a>
+                    </p>
+                <hr />
+            </article>
 
-                <!-- You can start editing here. -->
+            <!-- You can start editing here. -->
 
-                <h3 id="comments">
-                    一条回应：&#8220;邻居&#8221;	</h3>
+            <h3 id="comments">
+                60条回应：&#8220;友情链接&#8221;	</h3>
 
-                <div class="navigation">
-                    <div class="alignleft"></div>
-                    <div class="alignright"></div>
+            <div class="navigation">
+                <div class="alignleft">
+                    <a href="http://www.siryin.com/link/comment-page-2#comments" >&laquo; 先前评论</a>
                 </div>
+                <div class="alignright"></div>
+            </div>
 
-                <ol class="commentlist">
-                    <li class="comment even thread-even depth-1" id="comment-324">
-                        <div id="div-comment-324" class="comment-body">
-                            <div class="comment-author vcard">
-                                <img alt='' src='http://cn.gravatar.com/avatar/8a5bc6cb3feed4145ab9876a0dc98d2e?s=32&#038;d=mm&#038;r=g' srcset='http://cn.gravatar.com/avatar/8a5bc6cb3feed4145ab9876a0dc98d2e?s=64&amp;d=mm&amp;r=g 2x' class='avatar avatar-32 photo' height='32' width='32' />			<cite class="fn"><a href='http://cocofive.cc/' rel='external nofollow' class='url'>小五</a></cite><span class="says">说道：</span>		</div>
-
-                            <div class="comment-meta commentmetadata"><a href="http://jianbi.me/links#comment-324">
-                                    2016-11-18 22:56</a>		</div>
-
-                            <p>听说这里没有评论～</p>
-
-                            <div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://jianbi.me/links?replytocom=324#respond' onclick='return addComment.moveForm( "div-comment-324", "324", "respond", "1615" )' aria-label='回复给小五'>回复</a></div>
+            <ol class="commentlist">
+                <li class="comment even thread-even depth-1 parent" id="comment-981">
+                    <div id="div-comment-981" class="comment-body">
+                        <div class="comment-author vcard">
+                            <img alt='' src='http://cn.gravatar.com/avatar/571f51a0f082025db7216ad983449d0d?s=32&#038;r=g' class='avatar avatar-32 photo' height='32' width='32' />
+                            <cite class="fn"><a href='http://www.nameluo.com' rel='external nofollow' class='url'>小萝博客</a></cite>
+                            <span class="says">说道：</span>
                         </div>
-                    </li><!-- #comment-## -->
-                </ol>
 
-                <div class="navigation">
-                    <div class="alignleft"></div>
-                    <div class="alignright"></div>
-                </div>
+                        <div class="comment-meta commentmetadata">
+                            <a href="http://www.siryin.com/link/comment-page-3#comment-981">
+                                2016年11月18日 下午4:49
+                            </a>
+                        </div>
+                        <p>麻烦修改一下孟子非博客为小萝博客</p>
 
-                <div id="respond" class="comment-respond">
-                    <h3 id="reply-title" class="comment-reply-title">发表评论 <small><a rel="nofollow" id="cancel-comment-reply-link" href="/links#respond" style="display:none;">取消回复</a></small></h3>				<form action="http://jianbi.me/wp-comments-post.php" method="post" id="commentform" class="comment-form">
-                        <p class="comment-notes"><span id="email-notes">电子邮件地址不会被公开。</span> 必填项已用<span class="required">*</span>标注</p><p class="comment-form-comment"><label for="comment">评论</label> <textarea id="comment" name="w" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea><textarea name="comment" cols="100%" rows="4" style="display:none"></textarea></p><p class="comment-form-author"><label for="author">姓名 <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" aria-required='true' required='required' /></p>
-                        <p class="comment-form-email"><label for="email">电子邮件 <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" aria-required='true' required='required' /></p>
-                        <p class="comment-form-url"><label for="url">站点</label> <input id="url" name="url" type="text" value="" size="30" maxlength="200" /></p>
-                        <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="发表评论" /> <input type='hidden' name='comment_post_ID' value='1615' id='comment_post_ID' />
-                            <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-                        </p>				</form>
-                </div><!-- #respond -->
-            </section>
+                        <div class="reply">
+                            <a rel='nofollow' class='comment-reply-link' href='http://www.siryin.com/link?replytocom=981#respond' onclick='return addComment.moveForm( "div-comment-981", "981", "respond", "52" )' aria-label='回复给小萝博客'>回复</a>
+                        </div>
+                    </div>
+                    <ul class="children">
+                        <li class="comment byuser comment-author-yxs bypostauthor odd alt depth-2" id="comment-982">
+                            <div id="div-comment-982" class="comment-body">
+                                <div class="comment-author vcard">
+                                    <img alt='' src='http://cn.gravatar.com/avatar/2106e2c3bad17698267dd8d101033491?s=32&#038;r=g' class='avatar avatar-32 photo' height='32' width='32' />
+                                    <cite class="fn">尹先生</cite><span class="says">说道：</span>
+                                </div>
+
+                                <div class="comment-meta commentmetadata">
+                                    <a href="http://www.siryin.com/link/comment-page-3#comment-982">
+                                        2016年11月18日 下午6:18
+                                    </a>
+                                </div>
+
+                                <p>@<a href="#comment-981">小萝博客</a>
+                                <p>好久不见呀，已经修改完毕了</p>
+
+                                <div class="reply">
+                                    <a rel='nofollow' class='comment-reply-link' href='http://www.siryin.com/link?replytocom=982#respond' onclick='return addComment.moveForm( "div-comment-982", "982", "respond", "52" )' aria-label='回复给尹先生'>回复</a>
+                                </div>
+                            </div>
+                        </li><!-- #comment-## -->
+                    </ul><!-- .children -->
+                </li><!-- #comment-## -->
+                <li class="comment even thread-odd thread-alt depth-1 parent" id="comment-931">
+                    <div id="div-comment-931" class="comment-body">
+                        <div class="comment-author vcard">
+                            <img alt='' src='http://cn.gravatar.com/avatar/08b2775a4a23434e5d30ca08eb4c116c?s=32&#038;r=g' srcset='http://cn.gravatar.com/avatar/08b2775a4a23434e5d30ca08eb4c116c?s=64&amp;r=g 2x' class='avatar avatar-32 photo' height='32' width='32' />			<cite class="fn"><a href='http://www.m1ku.cc/' rel='external nofollow' class='url'>某宅</a></cite><span class="says">说道：</span>		</div>
+
+                        <div class="comment-meta commentmetadata"><a href="http://www.siryin.com/link/comment-page-3#comment-931">
+                                2016年10月8日 下午10:15</a>		</div>
+
+                        <p>更换域名了-0- 博主 <a href="http://www.m1ku.cc/" rel="nofollow">http://www.m1ku.cc/</a><br />
+                            话说。新主题相当不错啊<br />
+                            底部装逼依旧在，我拿走了啊。。。。</p>
+
+                        <div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://www.siryin.com/link?replytocom=931#respond' onclick='return addComment.moveForm( "div-comment-931", "931", "respond", "52" )' aria-label='回复给某宅'>回复</a></div>
+                    </div>
+                    <ul class="children">
+                        <li class="comment byuser comment-author-yxs bypostauthor odd alt depth-2 parent" id="comment-936">
+                            <div id="div-comment-936" class="comment-body">
+                                <div class="comment-author vcard">
+                                    <img alt='' src='http://cn.gravatar.com/avatar/2106e2c3bad17698267dd8d101033491?s=32&#038;r=g' srcset='http://cn.gravatar.com/avatar/2106e2c3bad17698267dd8d101033491?s=64&amp;r=g 2x' class='avatar avatar-32 photo' height='32' width='32' />			<cite class="fn">尹先生</cite><span class="says">说道：</span>		</div>
+
+                                <div class="comment-meta commentmetadata"><a href="http://www.siryin.com/link/comment-page-3#comment-936">
+                                        2016年10月8日 下午11:34</a>		</div>
+
+                                <p>@<a href="#comment-931">某宅</a>
+                                <p>卧槽，你换域名速度好快呀！</p>
+
+                                <div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://www.siryin.com/link?replytocom=936#respond' onclick='return addComment.moveForm( "div-comment-936", "936", "respond", "52" )' aria-label='回复给尹先生'>回复</a></div>
+                            </div>
+                            <ul class="children">
+                                <li class="comment even depth-3 parent" id="comment-937">
+                                    <div id="div-comment-937" class="comment-body">
+                                        <div class="comment-author vcard">
+                                            <img alt='' src='http://cn.gravatar.com/avatar/08b2775a4a23434e5d30ca08eb4c116c?s=32&#038;r=g' srcset='http://cn.gravatar.com/avatar/08b2775a4a23434e5d30ca08eb4c116c?s=64&amp;r=g 2x' class='avatar avatar-32 photo' height='32' width='32' />			<cite class="fn"><a href='http://www.m1ku.cc/' rel='external nofollow' class='url'>某宅</a></cite><span class="says">说道：</span>		</div>
+
+                                        <div class="comment-meta commentmetadata"><a href="http://www.siryin.com/link/comment-page-3#comment-937">
+                                                2016年10月8日 下午11:40</a>		</div>
+
+                                        <p>@<a href="#comment-936">尹先生</a> 不换了！<br />
+                                            这么可爱的域名，我决定续10年了</p>
+
+                                        <div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://www.siryin.com/link?replytocom=937#respond' onclick='return addComment.moveForm( "div-comment-937", "937", "respond", "52" )' aria-label='回复给某宅'>回复</a></div>
+                                    </div>
+                                    <ul class="children">
+                                        <li class="comment byuser comment-author-yxs bypostauthor odd alt depth-4" id="comment-938">
+                                            <div id="div-comment-938" class="comment-body">
+                                                <div class="comment-author vcard">
+                                                    <img alt='' src='http://cn.gravatar.com/avatar/2106e2c3bad17698267dd8d101033491?s=32&#038;r=g' srcset='http://cn.gravatar.com/avatar/2106e2c3bad17698267dd8d101033491?s=64&amp;r=g 2x' class='avatar avatar-32 photo' height='32' width='32' />			<cite class="fn">尹先生</cite><span class="says">说道：</span>		</div>
+
+                                                <div class="comment-meta commentmetadata"><a href="http://www.siryin.com/link/comment-page-3#comment-938">
+                                                        2016年10月8日 下午11:41</a>		</div>
+
+                                                <p>@<a href="#comment-937">某宅</a>
+                                                <p>好啊，希望你可以坚持下去</p>
+
+                                                <div class="reply"><a rel='nofollow' class='comment-reply-link' href='http://www.siryin.com/link?replytocom=938#respond' onclick='return addComment.moveForm( "div-comment-938", "938", "respond", "52" )' aria-label='回复给尹先生'>回复</a></div>
+                                            </div>
+                                        </li><!-- #comment-## -->
+                                    </ul><!-- .children -->
+                                </li><!-- #comment-## -->
+                            </ul><!-- .children -->
+                        </li><!-- #comment-## -->
+                    </ul><!-- .children -->
+                </li><!-- #comment-## -->
+            </ol>
+
+            <div class="navigation">
+                <div class="alignleft"><a href="http://www.siryin.com/link/comment-page-2#comments" >&laquo; 先前评论</a></div>
+                <div class="alignright"></div>
+            </div>
+
+            <div id="respond" class="comment-respond">
+                <h3 id="reply-title" class="comment-reply-title">向<a href="#comment-826">尹先生</a>进行回复 <small><a rel="nofollow" id="cancel-comment-reply-link" href="/link#respond">取消回复</a></small></h3>				<form action="http://www.siryin.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+                    <p class="comment-notes"><span id="email-notes">电子邮件地址不会被公开。</span></p><p class="comment-form-author"><label for="author">姓名</label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" /></p>
+                    <p class="comment-form-email"><label for="email">电子邮件</label> <input id="email" name="email" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" /></p>
+                    <p class="comment-form-url"><label for="url">站点</label> <input id="url" name="url" type="text" value="" size="30" maxlength="200" /></p>
+                    <p class="comment-form-comment"><label for="comment">评论</label> <textarea id="comment" name="w" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea><textarea name="comment" cols="100%" rows="4" style="display:none"></textarea></p><p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="发表评论" /> <input type='hidden' name='comment_post_ID' value='52' id='comment_post_ID' />
+                        <input type='hidden' name='comment_parent' id='comment_parent' value='826' />
+                    </p>				</form>
+            </div><!-- #respond -->
             <div class="clearer"></div>
-            <nav class="navigator">
-            </nav>
-        </div>
+        </main>
     </div>
-</div>
+
 @endsection

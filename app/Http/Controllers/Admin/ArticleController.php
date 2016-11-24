@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Article;
 use App\Model\Category;
 use App\Model\Upload;
+use Session;
 use Request;
 
 class ArticleController extends Controller
@@ -16,32 +17,44 @@ class ArticleController extends Controller
         $article = new Article();
         $artList = $article->selectArt();
         $title = '文章管理';
-        return view('admin.articleList' , compact('title')) -> with('article' , $artList);
+        return view('admin.articleList' , compact('title'))
+            -> with('article' , $artList)
+            -> with('user' , Session::get('userInfo'));
     }
 
     public function dustbin() {
         $article = new Article();
         $artInfo = $article -> selectDustbin();
         $title = '垃圾箱';
-        return view('admin.dustbin' , compact('title')) -> with('article' , $artInfo);
+        return view('admin.dustbin' , compact('title'))
+            -> with('article' , $artInfo)
+            -> with('user' , Session::get('userInfo'));
     }
 
     public function addArticle () {
         $title = '添加文章';
         $category = new Category();
         $catInfo = $category -> simpleFind();
-        return view('admin.addArticle' , compact('title'))->with('cat' , $catInfo);
+        return view('admin.addArticle' , compact('title'))
+            -> with('cat' , $catInfo)
+            -> with('user' , Session::get('userInfo'));
     }
 
     public function editArt($artId) {
         $title = '编辑文章';
         $article = new Article();
+
+        if (!$article -> validatorArtExists($artId)) {
+            abort('404');
+        }
+
         $category = new Category();
         $catInfo = $category -> simpleFind();
         $artInfo = $article -> findArt($artId);
         return view('admin.editArt' , compact('title')) 
             -> with('article' , $artInfo) 
-            -> with('cat' , $catInfo);
+            -> with('cat' , $catInfo)
+            -> with('user' , Session::get('userInfo'));
     }
 
     public function toUpdateArt() {

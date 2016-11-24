@@ -5,21 +5,25 @@ namespace App\Http\Controllers\Admin;
 use App\Api\Api;
 use App\Http\Controllers\Controller;
 use App\Model\Link;
+use Session;
 use Request;
 
 class LinkController extends Controller
 {
     public function index () {
+
         $link = new Link();
         $title = '友链管理';
-//        dd($link->select());
         $linkInfo = $link -> selectLinkPage();
-        return view('admin.link' , compact('title')) -> with('link' , $linkInfo);
+        return view('admin.link' , compact('title'))
+            -> with('link' , $linkInfo)
+            -> with('user' , Session::get('userInfo'));
     }
 
     public function addLink () {
         $title = '添加友链';
-        return view('admin.addLink', compact('title'));
+        return view('admin.addLink', compact('title'))
+            -> with('user' , Session::get('userInfo'));
     }
 
     public function editLink ($linkId) {
@@ -30,7 +34,9 @@ class LinkController extends Controller
         }
         $linkInfo = $link -> findLink($linkId);
         $title = '编辑友链';
-        return view('admin.editLink', compact('title')) -> with('link' , $linkInfo);
+        return view('admin.editLink', compact('title'))
+            -> with('link' , $linkInfo)
+            -> with('user' , Session::get('userInfo'));
     }
 
     public function toEditLink() {

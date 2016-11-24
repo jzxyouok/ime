@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Api\Api;
 use App\Http\Controllers\Controller;
-use Predis\Response\Status;
-use Request;
 use App\Model\Category;
+use Session;
+use Request;
 
 class CatController extends Controller
 {
@@ -14,14 +14,19 @@ class CatController extends Controller
         $category = new Category();
         $catInfo = $category -> simpleFind();
         $title = '栏目管理';
-        return view('admin.category' , compact('title')) -> with('catInfo' , $catInfo);
+        return view('admin.category' , compact('title'))
+            -> with('catInfo' , $catInfo)
+            -> with('user' , Session::get('userInfo'));
     }
     public function addCat ($catPid = 0) {
 
         $category = new Category();
         $catInfo = $category -> simpleFind();
         $title = '添加栏目';
-        return view('admin.addCat' , compact('title')) -> with('catInfo' , $catInfo) -> with('catPid' , $catPid);
+        return view('admin.addCat' , compact('title'))
+            -> with('catInfo' , $catInfo)
+            -> with('catPid' , $catPid)
+            -> with('user' , Session::get('userInfo'));
     }
     public function editCat ($catId) {
         $category = new Category();
@@ -33,7 +38,10 @@ class CatController extends Controller
         $catInfo = $category -> simpleFind($catId);
         $cat = $category -> findCat($catId);
         $title = '编辑栏目';
-        return view('admin.editCat' , compact('title')) -> with('catInfo' , $catInfo) -> with('cat' , $cat);
+        return view('admin.editCat' , compact('title'))
+            -> with('catInfo' , $catInfo)
+            -> with('cat' , $cat)
+            -> with('user' , Session::get('userInfo'));
     }
     public function delCat() {
         $CatApi = new Api();

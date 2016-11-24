@@ -19,6 +19,7 @@ Route::get('msg' , 'Home\MsgController@index');
 Route::group(['prefix' => 'admin' , 'middleware' => 'login'], function () {
     Route::get('profile' , 'Admin\ProfileController@index');
     Route::post('profile/uploadThumb' , 'Admin\ProfileController@uploadThumb');
+    Route::post('toUpdateProfile' , 'Admin\ProfileController@toUpdateProfile');
     Route::get('editPwd' , 'Admin\ProfileController@editPwd');
     Route::get('system' , 'Admin\SystemController@index');
     Route::get('addArt' , 'Admin\ArticleController@addArticle');
@@ -65,5 +66,6 @@ Route::get('redis' , 'Admin\RedisController@index');
 //});
 
 Route::get('test' , function () {
-    dd(\Illuminate\Support\Facades\Artisan::call('key:generate'));
+//    dd(\Illuminate\Support\Facades\Artisan::call('key:generate'));
+    dd(public_path().'\upload\thumb');
 });

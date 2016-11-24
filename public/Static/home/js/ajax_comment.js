@@ -1,19 +1,19 @@
-jQuery(document).ready(function(jQuery) {
+jQuery(document).ready(function (jQuery) {
     var __cancel = jQuery('#cancel-comment-reply-link'),
         __cancel_text = __cancel.text(),
         __list = 'commentlist';//your comment wrapprer
-    jQuery(document).on("submit", "#commentform", function() {
+    jQuery(document).on("submit", "#commentform", function () {
         jQuery.ajax({
             url: ajaxcomment.ajax_url,
             data: jQuery(this).serialize() + "&action=ajax_comment",
             type: jQuery(this).attr('method'),
             beforeSend: addComment.createButterbar("提交中...."),
-            error: function(request) {
+            error: function (request) {
                 var t = addComment;
                 t.createButterbar(request.responseText);
             },
-            success: function(data) {
-                jQuery('textarea').each(function() {
+            success: function (data) {
+                jQuery('textarea').each(function () {
                     this.value = ''
                 });
                 var t = addComment,
@@ -24,7 +24,7 @@ jQuery(document).ready(function(jQuery) {
                     parent = t.I('comment_parent').value;
                 if (parent != '0') {
                     jQuery('#respond').before('<ol class="children">' + data + '</ol>');
-                } else if (!jQuery('.' + __list ).length) {
+                } else if (!jQuery('.' + __list).length) {
                     if (ajaxcomment.formpostion == 'bottom') {
                         jQuery('#respond').before('<ol class="' + __list + '">' + data + '</ol>');
                     } else {
@@ -33,9 +33,9 @@ jQuery(document).ready(function(jQuery) {
 
                 } else {
                     if (ajaxcomment.order == 'asc') {
-                        jQuery('.' + __list ).append(data); // your comments wrapper
+                        jQuery('.' + __list).append(data); // your comments wrapper
                     } else {
-                        jQuery('.' + __list ).prepend(data); // your comments wrapper
+                        jQuery('.' + __list).prepend(data); // your comments wrapper
                     }
                 }
                 t.createButterbar("提交成功");
@@ -51,7 +51,7 @@ jQuery(document).ready(function(jQuery) {
         return false;
     });
     addComment = {
-        moveForm: function(commId, parentId, respondId) {
+        moveForm: function (commId, parentId, respondId) {
             var t = this,
                 div, comm = t.I(commId),
                 respond = t.I(respondId),
@@ -65,13 +65,13 @@ jQuery(document).ready(function(jQuery) {
                 div.id = 'wp-temp-form-div';
                 div.style.display = 'none';
                 respond.parentNode.insertBefore(div, respond)
-            }!comm ? (temp = t.I('wp-temp-form-div'), t.I('comment_parent').value = '0', temp.parentNode.insertBefore(respond, temp), temp.parentNode.removeChild(temp)) : comm.parentNode.insertBefore(respond, comm.nextSibling);
+            } !comm ? (temp = t.I('wp-temp-form-div'), t.I('comment_parent').value = '0', temp.parentNode.insertBefore(respond, temp), temp.parentNode.removeChild(temp)) : comm.parentNode.insertBefore(respond, comm.nextSibling);
             jQuery("body").animate({
                 scrollTop: jQuery('#respond').offset().top - 180
             }, 400);
             parent.value = parentId;
             cancel.style.display = '';
-            cancel.onclick = function() {
+            cancel.onclick = function () {
                 var t = addComment,
                     temp = t.I('wp-temp-form-div'),
                     respond = t.I(t.respondId);
@@ -86,18 +86,18 @@ jQuery(document).ready(function(jQuery) {
             };
             try {
                 t.I('comment').focus();
-            } catch (e) {}
+            } catch (e) { }
             return false;
         },
-        I: function(e) {
+        I: function (e) {
             return document.getElementById(e);
         },
-        clearButterbar: function(e) {
+        clearButterbar: function (e) {
             if (jQuery(".butterBar").length > 0) {
                 jQuery(".butterBar").remove();
             }
         },
-        createButterbar: function(message) {
+        createButterbar: function (message) {
             var t = this;
             t.clearButterbar();
             jQuery("body").append('<div class="butterBar butterBar-center"><p class="butterBar-message">' + message + '</p></div>');
