@@ -3,12 +3,16 @@
     namespace App\Model;
 
     use Illuminate\Database\Eloquent\Model;
+    use Zizaco\Entrust\Traits\EntrustUserTrait;
     use Request;
     use Validator;
     use App\Api\Api;
 
 class User extends Model
 {
+
+    use EntrustUserTrait;
+
     public $dateFormat = "U";
 
     public function findUser() {

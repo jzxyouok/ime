@@ -1,85 +1,92 @@
 <?php
 
+/**
+ * This file is part of Entrust,
+ * a role & permission management solution for Laravel.
+ *
+ * @license MIT
+ * @package Zizaco\Entrust
+ */
+
 return [
 
     /*
     |--------------------------------------------------------------------------
-    | 站点名称
+    | Entrust Role Model
     |--------------------------------------------------------------------------
     |
-    | 这个值是你的网站名称
+    | This is the Role model used by Entrust to create correct relations.  Update
+    | the role if it is in a different namespace.
     |
     */
-    'web_name' => '余白',
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | 站点地址
-    |--------------------------------------------------------------------------
-    |
-    | 这个值是你的网站 URL 地址
-    |
-    */
-    'web_url' => 'http://ime.demo.com',
+    'role' => 'App\Model\Role',
 
     /*
     |--------------------------------------------------------------------------
-    | 站点 LOGO
+    | Entrust Roles Table
     |--------------------------------------------------------------------------
     |
-    | 这个值是你的网站 LOGO 链接地址
+    | This is the roles table used by Entrust to save roles to the database.
     |
     */
-    'web_logo' => '',
+    'roles_table' => 'roles',
 
     /*
     |--------------------------------------------------------------------------
-    | 管理员邮箱
+    | Entrust Permission Model
     |--------------------------------------------------------------------------
     |
-    | 这个值是你的网站 管理员邮箱 ， 用户注册，留言等 信息通知邮箱
+    | This is the Permission model used by Entrust to create correct relations.
+    | Update the permission if it is in a different namespace.
     |
     */
-    'admin_email' => '',
+    'permission' => 'App\Model\Permission',
 
     /*
     |--------------------------------------------------------------------------
-    | 上传限制
+    | Entrust Permissions Table
     |--------------------------------------------------------------------------
     |
-    | 这个值是你的网站 附件上传 的最大大小限制    |
+    | This is the permissions table used by Entrust to save permissions to the
+    | database.
+    |
     */
-    'upload_limit'  =>  2048,
+    'permissions_table' => 'permissions',
 
     /*
     |--------------------------------------------------------------------------
-    | 站点备案号
+    | Entrust permission_role Table
     |--------------------------------------------------------------------------
     |
-    | 这个值是你的网站 备案号
+    | This is the permission_role table used by Entrust to save relationship
+    | between permissions and roles to the database.
     |
     */
-    'web_tcp'   =>  '',
+    'permission_role_table' => 'permission_role',
 
     /*
     |--------------------------------------------------------------------------
-    | 站点简介
+    | Entrust role_user Table
     |--------------------------------------------------------------------------
     |
-    | 这个值是你的网站 描述
+    | This is the role_user table used by Entrust to save assigned roles to the
+    | database.
     |
     */
-    'web_description'   =>  '',
+    'role_user_table' => 'role_user',
 
     /*
     |--------------------------------------------------------------------------
-    | 附件类型
+    | User Foreign key on Entrust's role_user Table (Pivot)
     |--------------------------------------------------------------------------
-    |
-    | 这个值是你的网站 上传的附件类型
-    |
     */
-    'upload_type'   =>  ''
+    'user_foreign_key' => 'user_id',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Role Foreign key on Entrust's role_user Table (Pivot)
+    |--------------------------------------------------------------------------
+    */
+    'role_foreign_key' => 'role_id',
 
 ];

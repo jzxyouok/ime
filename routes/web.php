@@ -65,6 +65,9 @@ Route::get('redis' , 'Admin\RedisController@index');
 //    echo config('site.web_url');
 //});
 
+Route::get('addRole' , 'Admin\RoleController@addRole');
+Route::get('addPermission' , 'Admin\RoleController@addPermission');
+
 Route::get('test' , function () {
 //    dd(\Illuminate\Support\Facades\Artisan::call('key:generate'));
     dd(public_path().'\upload\thumb');

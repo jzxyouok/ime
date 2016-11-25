@@ -59,6 +59,32 @@ function menu_click(menu,flag) {
     });
 }
 
+(function ($) {
+    var ime = {
+        init: function () {
+            $(document).pjax('a:not(a[target="_blank"])', '#pjax', {
+                timeout: 3600,
+                maxCacheLength: 500
+            });
+            $(document).on('pjax:start', function() {
+                NProgress.set(0.4);
+                $('body').addClass('load');
+            });
+            $(document).on('pjax:end', function() {
+                $('body').removeClass('load');
+                NProgress.done();
+                $("body,html").animate({
+                    scrollTop: 0
+                }, 400);
+            });
+        }
+    };
+    window.ime = ime;
+})(jQuery);
+$(document).ready(function()
+{
+    ime.init();
+});
 //重载
 // function reload_func() {
 //     //滑块

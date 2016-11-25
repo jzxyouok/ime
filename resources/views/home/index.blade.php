@@ -1,7 +1,7 @@
 @extends('home.home')
 
 @section('Content')
-<div class="pjax">
+<div id="pjax">
     <section id="slide">
         <img src="https://ws4.sinaimg.cn/large/e8f236c4jw1f9tdfdwz7zj21jk0dwdl4.jpg">
     </section>
