@@ -25,7 +25,8 @@
             167条回应：&#8220;留言&#8221;	</h3>
 
         <div class="navigation">
-            <div class="alignleft"><a href="http://www.siryin.com/message/comment-page-5#comments" >&laquo; 先前评论</a></div>
+            <div class="alignleft">
+                <a href="http://www.siryin.com/message/comment-page-5#comments" >&laquo; 先前评论</a></div>
             <div class="alignright"></div>
         </div>
 

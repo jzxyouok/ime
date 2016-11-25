@@ -38,19 +38,6 @@
         <!--文章列表-->
         <article class="post post-list">
             <div class="info">
-                <span class="time">11月05日</span>
-                <span class="comment">1条评论</span>
-                <p itemprop="post">
-                    本人是linux运维工程师，对这方面有点心得，现在我说说要掌握哪方面的工具吧
-                    说到工具，在行外可以说是技能，在行内我们一般称为工具，就是运维必须要掌握的工具。
-                    我就大概列出这几方面，这样入门就基本没问题了...
-                </p>
-            </div>
-        </article>
-        <div class="clearer"></div>
-        <!--文章列表-->
-        <article class="post post-list">
-            <div class="info">
                 <h2 itemprop="name headline" class="title">
                     <a href="http://www.siryin.com/1218.html">我的情你可懂</a>
                 </h2>

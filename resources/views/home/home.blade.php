@@ -43,7 +43,8 @@
             font-size:16px;font-style:normal;
             -webkit-font-smoothing: antialiased;
             -webkit-text-stroke-width: 0.2px;
-            -moz-osx-font-smoothing: grayscale;}
+            -moz-osx-font-smoothing: grayscale;
+        }
     </style>
 </head>
 <div id="bg" style="background-image: url('/Static/home/images/f0eb08062673c9416c03680733e8b832.jpg')">
@@ -96,13 +97,13 @@
             </ul>
         </section>
         Theme by <a target="_blank" href="https://www.inot.vip">tizips</a>
-        &copy; 2016 <a href="http://www.siryin.com">{{ config('site.web_name') }}</a>
+        &copy; 2016 <a href="{{ config('site.web_url') }}">{{ config('site.web_name') }}</a>
         <a class="back2top"></a>
     </footer>
 </section>
 <div class="clearer" style="height:1px;"></div>
 <div class="search_form">
-    <form method="get" action="http://www.siryin.com">
+    <form method="get" action="{{ config('site.web_url') }}">
         <p class="micro mb-">你想搜索什么...</p>
         <input class="search_key" name="s" placeholder="Enter search keywords..." type="text" value="">
         <button alt="Search" type="submit">Search</button>

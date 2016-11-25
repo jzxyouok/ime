@@ -27,16 +27,21 @@
 
     <style>
         @font-face {
-            font-family: 'iconfont';
-            src: url('//at.alicdn.com/t/font_1473690180_9971838.eot'); /* IE9*/
-            src: url('//at.alicdn.com/t/font_1473690180_9971838.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-            url('//at.alicdn.com/t/font_1473690180_9971838.woff') format('woff'), /* chrome、firefox */
-            url('//at.alicdn.com/t/font_1473690180_9971838.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-            url('//at.alicdn.com/t/font_1473690180_9971838.svg#iconfont') format('svg'); /* iOS 4.1- */
+            font-family: 'iconfont';  /* project id："118726" */
+            src: url('//at.alicdn.com/t/font_gy7r75a4di7tx1or.eot');
+            src: url('//at.alicdn.com/t/font_gy7r75a4di7tx1or.eot?#iefix') format('embedded-opentype'),
+            url('//at.alicdn.com/t/font_gy7r75a4di7tx1or.woff') format('woff'),
+            url('//at.alicdn.com/t/font_gy7r75a4di7tx1or.ttf') format('truetype'),
+            url('//at.alicdn.com/t/font_gy7r75a4di7tx1or.svg#iconfont') format('svg');
         }
 
-        .iconfont{font-family:"iconfont";
-            font-size:16px;font-style:normal;}
+        .iconfont{
+            font-family:"iconfont" !important;
+            font-size:16px;font-style:normal;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0.2px;
+            -moz-osx-font-smoothing: grayscale;
+        }
     </style>
 
 </head>
@@ -124,7 +129,12 @@
                         <p>评论</p>
                     </a>
                 </li>
-
+                <li>
+                    <a href="/admin/cache">
+                        <i class="iconfont">&#xe647;</i>
+                        <p>缓存</p>
+                    </a>
+                </li>
                 <li>
                     <a data-toggle="collapse" href="#Link">
                         <i class="iconfont">&#xe65c;</i>
