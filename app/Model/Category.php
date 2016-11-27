@@ -90,6 +90,17 @@ class Category extends Model
         return $this -> orderCat($catInfo);
     }
 
+
+    public function selectMenu() {
+        $catInfo = self::select('id','cat_name','cat_pid','cat_seo_title','cat_seo_keyword','cat_seo_description','cat_url')
+            ->orderBy('cat_order' , 'asc')
+            ->orderBy('id','desc')
+            ->get()
+            ->toArray();
+//        dd($catInfo);
+        return $this -> orderCatMenu($catInfo);
+    }
+
     /**编辑栏目状态 ： 隐藏 / 显示
      * @return mixed 返回编辑栏目成功/失败结果
      */
@@ -167,5 +178,32 @@ class Category extends Model
             }
         }
         return $catArr;
+    }
+
+    public function orderCatMenu($catInfo) {
+
+        $catArr = array();
+        foreach ($catInfo as $value) {
+
+            $catArr[$value['id']] = $value;
+        }
+        foreach ($catArr as $value) {
+
+            foreach ($catArr as $val) {
+                if ($value['id'] == $val['cat_pid']) {
+
+                    $catArr[$val['cat_pid']]['child'][] = $val;
+                }
+            }
+        }
+        $category = array();
+        foreach ($catArr as $value) {
+            if ($value['cat_pid'] == 0) {
+                $category[$value['id']] = $value;
+            }
+        }
+        $category = array_sort_recursive($category);
+        
+        return $category;
     }
 }

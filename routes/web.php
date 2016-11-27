@@ -12,7 +12,8 @@
 */
 
 Route::get('/', 'Home\IndexController@index');
-Route::get('art/{catId}' , 'Home\ArticleController@index');
+Route::get('Cat/{catId}', 'Home\CategoryController@index');
+Route::get('Art/{artId}' , 'Home\ArticleController@index');
 Route::get('link' , 'Home\LinkController@index');
 Route::get('msg' , 'Home\MsgController@index');
 
@@ -44,6 +45,7 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'login'], function () {
     Route::get('comment' , 'Admin\CommentController@index');
     Route::get('msg' , 'Admin\MsgController@index');
     Route::get('cache' , 'Admin\CacheController@index');
+    Route::get('cache/updateIndex' , 'Admin\CacheController@updateIndex');
     Route::get('link' , 'Admin\LinkController@index');
     Route::get('addLink' , 'Admin\LinkController@addLink');
     Route::post('toAddLink' , 'Admin\LinkController@toAddLink');
@@ -65,6 +67,9 @@ Route::get('redis' , 'Admin\RedisController@index');
 //Route::get('test' , function () {
 //    echo config('site.web_url');
 //});
+
+Route::get('addRole' , 'Admin\RoleController@addRole');
+Route::get('addPermission' , 'Admin\RoleController@addPermission');
 
 Route::get('test' , function () {
 //    dd(\Illuminate\Support\Facades\Artisan::call('key:generate'));

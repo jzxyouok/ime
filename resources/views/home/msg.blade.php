@@ -1,6 +1,6 @@
 @extends('home.home')
 @section('Content')
-<div class="pjax">
+<div id="pjax">
     <main id="main">
         <section id="slide">
             <img src="https://ws4.sinaimg.cn/large/e8f236c4jw1f9tdfdwz7zj21jk0dwdl4.jpg">
@@ -10,8 +10,8 @@
             <section id="banner">
                 <h1 itemprop="name headline" class="post_title">留言</h1>
                 <ul class="info">
-                    <li>2015年03月08日</li>
-                    <li>167条评论</li>
+                    {{--<li>2015年03月08日</li>--}}
+                    {{--<li>167条评论</li>--}}
                 </ul>
             </section>
             <p>尊敬的朋友您好:</p>

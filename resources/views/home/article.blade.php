@@ -23,7 +23,6 @@
             <p><strong>//sightinfo</strong>：查看小视频参数</p>
             <p>//sightinfo可以让小视频的左上角显示小视频的一些参数，比如帧率、分辨率、时长、大小等。输入//sightinfo并发送后，参数不会立即显示，需先退出微信再重新进入。如要取消显示参数，只需重复输入//sightinfo并发送，退出微信再重新进入就好了。</p>
 
-
             <div class="meta">
                 <p>— 于 2016年11月08 ，共写了 289 字；</p>
                 <p>— 本文共有 2 个标签：标签：<a href="http://jianbi.me/tag/%e4%b8%bb%e9%a2%98" rel="tag">主题</a>, <a href="http://jianbi.me/tag/share" rel="tag">分享</a></p>
@@ -36,10 +35,10 @@
             <ul class="sns">
                 <li class="github"><a href="https://github.com/wenlong002" target="_blank"><i class="iconfont">&#xe6bb;</i></a></li>
                 {{--<li class="weibo"><a href="http://weibo.com/239320789" target="_blank"><i class="iconfont">&#xe6b5;</i></a></li>--}}
-                {{--<li class="twitter"><a href="https://twitter.com/icek1ng_" target="_blank"><i class="iconfont">&#xe65e;</i></a></li>--}}
+                {{--<li class="tencent"><a href="https://twitter.com/icek1ng_" target="_blank"><i class="iconfont">&#xe65e;</i></a></li>--}}
             </ul>
             <div class="about">
-                <a><img alt="" src="http://cn.gravatar.com/avatar/a09ea0098c2c0ddbcd9f3d3ceffb2683?s=80&amp;d=mm&amp;r=g" srcset="http://cn.gravatar.com/avatar/a09ea0098c2c0ddbcd9f3d3ceffb2683?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80"></a>
+                <a><img alt="" src="http://cn.gravatar.com/avatar/a09ea0098c2c0ddbcd9f3d3ceffb2683?s=80&amp;d=mm&amp;r=g" class="avatar avatar-80 photo" height="80" width="80"></a>
                 <span>浅喜似苍狗 深爱如长风</span>
             </div>
         </section>

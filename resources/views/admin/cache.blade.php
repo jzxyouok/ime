@@ -28,17 +28,15 @@
                                         <div class="content">
                                             <div class="form-group">
                                                 <div class="col-md-12">
-                                                    <select name="pid" class="selectpicker" data-title="栏目" data-style="btn-default btn-block btn-info btn-fill" data-menu-style="dropdown-blue">
-                                                        <option value="0" selected>全部栏目</option>
-                                                        @foreach($cat as $val)
-                                                            <option value="{{ $val['id'] }}">{{ $val['cat_title'] }}</option>
-                                                        @endforeach
-                                                    </select>
+                                                    <p>
+                                                        站点首页内容将会被更新<br />
+                                                        首页其他分页内容自动更新
+                                                    </p>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-md-12">
-                                                    <button name="submit" class="btn btn-info btn-wd">更新主页</button>
+                                                    <a href="/admin/cache/updateIndex" target="_blank" class="btn btn-info btn-wd">更新主页</a>
                                                 </div>
                                             </div>
                                         </div>

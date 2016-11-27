@@ -1,7 +1,7 @@
 @extends('home.home')
 
 @section('Content')
-    <div class="pjax">
+    <div id="pjax">
         <main id="main">
             <section id="slide">
                 <img src="https://ws4.sinaimg.cn/large/e8f236c4jw1f9tdfdwz7zj21jk0dwdl4.jpg">
@@ -11,49 +11,66 @@
                 <section id="banner">
                     <h1 itemprop="name headline" class="post_title">友情链接</h1>
                     <ul class="info">
-                        <li>03月04日</li>
-                        <li>60条评论</li>
+                        {{--<li>03月04日</li>--}}
+                        {{--<li>60条评论</li>--}}
                     </ul>
                 </section>
                 <p><meta name="robots" content="nofollow"/></p>
-                <p>
-                    <a href="http://www.guoguomiao.com">果果喵</a>
-                    <a href="http://moehentai.space/acg">moehentai社区</a>
-                    <a href="http://www.chen101.cn">柒爱博客</a>
-                    <a href="http://Hxyu.me">羽宝博客</a>
-                    <a href="http://www.tyd.me/">听雨博客</a>
-                    <a href="http://www.xxinn.cn/">小小驿站</a>
-                    <a href="http://199508.com/">太雄博客</a>
-                    <a href="http://www.blogtime.cc/">时光博客</a>
-                    <a href="http://liuxinggang.com/">刘兴刚博客</a>
-                    <a href="http://cocofive.cc/">那束陽光</a>
-                    <a href="http://tozero.cc/">那束陽光</a>
-                    <a href="http://anyuecm.cn/">小辉博客</a>
-                    <a href="http://www.aihoom.cn/">空白网络</a>
-                    <a href="http://xiaocp.com/%22%3E">阿佩博客</a>
-                    <a href="http://www.52din.vip/">Din资源分享</a>
-                    <a href="http://www.mouzhaibu.ml">某宅部</a>
-                    <a href="http://blog.bbs2.com/">字迹</a>
-                    <a href="http://www.xtkyy.cc/">夏天烤洋芋博客</a>
-                    <a href="http://loek.cc/">LOEK BLOG</a>
-                    <a href="http://yeyufan.cn/">夜与凡</a>
-                    <a href="http://www.dreamwings.cn">千千</a>
-                    <a href="http://nyun.me">NYUN</a>
-                    <a href="http://yeziting.com/">小叶自留地</a>
-                    <a href="http://www.zhangfupeng.com">张福鹏博客</a>
-                    <a href="http://www.idevs.cn/">设计笔记</a>
-                    <a href="http://hizip.net/">Hizip根据地</a>
-                    <a href="https://www.zyl.me/">ZYL的博客</a>
-                    <a href="http://www.xinqiuge.com/">信球哥</a>
-                    <a href="http://themebetter.com/">themebetter</a>
-                    <a href="http://www.jxgushihui.com/">精选故事网</a>
-                    <a href="http://lanyes.org/">蓝叶博客</a>
-                    <a href="http://www.liudm.cn/">轻风</a>
-                    <a href="http://www.sjk5.top/">收集控</a>
-                    <a href="http://5mx.net/">冷夜博客</a>
-                    <a href="http://www.siyochen.com/">陈昕妤SiyoChen</a>
-                    <a href="https://auauau.cn/">エース</a>
-                    </p>
+                <ul class="link-items">
+                    <li>
+                        <a href='#' target='_blank' title='盒子小栈 (7)'>
+                            <img alt="" src='http://cn.gravatar.com/avatar/571f51a0f082025db7216ad983449d0d?s=32&r=g' class="avatar avatar-120" width="120" height="120" />
+                            <span>盒子小栈<br></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#' target='_blank' title='c (4)'>
+                            <img alt="" src='http://cn.gravatar.com/avatar/2106e2c3bad17698267dd8d101033491?s=32&r=g' class="avatar avatar-120" width="120" height="120" />
+                            <span>c<br></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#' target='_blank' title='尹先生 (4)'>
+                            <img alt="" src='http://cn.gravatar.com/avatar/571f51a0f082025db7216ad983449d0d?s=32&r=g' class="avatar avatar-120" width="120" height="120" />
+                            <span>尹先生<br></span>
+                        </a>
+                    </li>
+                    <li><a href='http://www.byspace.net' target='_blank' title='山野愚人居 (4)'>
+                            <img alt="" src='http://cn.gravatar.com/avatar/2106e2c3bad17698267dd8d101033491?s=32&r=g' class="avatar avatar-120" width="120" height="120" />
+                            <span>山野愚人居<br></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#' target='_blank' title='LiarOnce (3)'>
+                            <img alt="" src='http://cn.gravatar.com/avatar/571f51a0f082025db7216ad983449d0d?s=32&r=g' class="avatar avatar-120" width="120" height="120" />
+                            <span>LiarOnce<br></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#' target='_blank' title='初夏阳光 (2)'>
+                            <img alt="" src='http://cn.gravatar.com/avatar/2106e2c3bad17698267dd8d101033491?s=32&r=g' class="avatar avatar-120" width="120" height="120" />
+                            <span>初夏阳光<br></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#' target='_blank' title='乌云密布 (2)'>
+                            <img alt="" src='http://cn.gravatar.com/avatar/2106e2c3bad17698267dd8d101033491?s=32&r=g' class="avatar avatar-120" width="120" height="120" />
+                            <span>乌云密布<br></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#' target='_blank' title='自定义 (2)'>
+                            <img alt="" src='http://cn.gravatar.com/avatar/2106e2c3bad17698267dd8d101033491?s=32&r=g' class="avatar avatar-120" width="120" height="120" />
+                            <span>自定义<br></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#' target='_blank' title='苏格 (1)'>
+                            <img alt="" src='http://cn.gravatar.com/avatar/2106e2c3bad17698267dd8d101033491?s=32&r=g' class="avatar avatar-120" width="120" height="120" />
+                            <span>苏格<br></span>
+                        </a>
+                    </li>
+                </ul>
                 <hr />
             </article>
 

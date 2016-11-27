@@ -60,6 +60,23 @@ class Article extends Model
             return false;
         }
     }
+    
+    public function findCountArticle() {
+        
+        return self::count();
+    }
+    
+    public function selectArticle($offset) {
+
+        return self::join('users' , 'articles.author' , '=' , 'users.id')
+            ->join('categories' , 'articles.cat_id' , '=' , 'categories.id')
+            ->join('articles_status' , 'articles.article_status' , '=' , 'articles_status.id')
+            ->select('articles.id' , 'articles.article_title' ,'categories.cat_name' , 'articles.thumb' , 'articles.content' , 'articles.seo_title' , 'articles.seo_keyword' , 'articles.seo_description' , 'users.name as author' , 'articles.updated_at')
+            ->orderBy('id','desc')
+            ->take(10)
+            ->skip($offset)
+            ->get();
+    }
 
     public function selectArt() {
         return self::join('users' , 'articles.author' , '=' , 'users.id')
