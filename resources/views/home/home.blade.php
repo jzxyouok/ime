@@ -59,23 +59,20 @@
         <nav id="topMenu" class="menu_click">
             <div class="menu-menu-container">
                 <ul id="menu-menu" class="menu">
-                    <li><a href="#">读者墙</a></li>
-                    <li><a href="#">分类</a>
-                        <ul class="sub-menu">
-                            <li><a href="#">瞎写</a></li>
-                            <li><a href="#">GameMaker</a></li>
-                            <li><a href="#">Typecho</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">各种外链</a>
-                        <ul class="sub-menu">
-                            <li><a href="#">Github</a></li>
-                            <li><a href="#">下载站</a></li>
-                            <li><a href="#">bilibili空间</a></li>
-                            <li><a href="#">bilibili直播间</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">正在装的逼</a></li>
+                    <li><a href="{{ config('site.web_url') }}">首页</a></li>
+                    @foreach($menu as $val)
+                        <li><a @if(!isset($val['child'])) href="/Cat/{{ $val['id'] }}" @endif>{{ $val['cat_name'] }}</a>
+                            @if(isset($val['child']))
+                                <ul class="sub-menu">
+                                    @foreach($val['child'] as $child)
+                                        <li><a href="/Cat/{{ $child['id'] }}">{{ $child['cat_name'] }}</a></li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </li>
+                    @endforeach
+                    <li><a href="/link">链接</a></li>
+                    <li><a href="/msg">留言</a></li>
                 </ul>
             </div>
             <i class="i_1"></i>
