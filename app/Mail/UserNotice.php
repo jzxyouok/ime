@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Model\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -11,14 +12,15 @@ class UserNotice extends Mailable
 {
     use Queueable, SerializesModels;
 
+    protected $order;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $order)
     {
-        //
+        $this -> order = $order;
     }
 
     /**
@@ -30,6 +32,11 @@ class UserNotice extends Mailable
     {
         return $this -> from('tizips@163.com' , 'tizips')
             -> subject('测试邮件')
-            ->view('emails.userNotice');
+            ->view('emails.userNotice')
+            ->with([
+                'name'  =>  $this -> order -> name,
+                'thumb' =>  $this -> order -> thumb,
+                'web_url'   =>  config('site.web_url'),
+            ]);
     }
 }

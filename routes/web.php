@@ -72,6 +72,7 @@ Route::get('addRole' , 'Admin\RoleController@addRole');
 Route::get('addPermission' , 'Admin\RoleController@addPermission');
 
 Route::get('test' , function () {
-//    dd(\Illuminate\Support\Facades\Artisan::call('key:generate'));
-    dd(public_path().'\upload\thumb');
+    $info = \App\Model\User::find(1);
+    \Illuminate\Support\Facades\Mail::to('tizips@qq.com')
+        ->send(new \App\Mail\UserNotice($info));
 });
