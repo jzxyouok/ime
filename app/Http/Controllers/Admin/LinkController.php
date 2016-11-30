@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Api\Api;
 use App\Http\Controllers\Controller;
+use App\Jobs\UpdateLinkCache;
 use App\Model\Link;
 use Session;
 use Request;
@@ -49,6 +50,7 @@ class LinkController extends Controller
         if(!$link -> updateLink()){
             $Api -> Message = '修改失败';
         }else{
+            $this -> store();
             $Api -> Status = 1;
             $Api -> Message = '修改成功';
         }
@@ -66,6 +68,7 @@ class LinkController extends Controller
         if (!$link -> addLink()) {
             $Api -> Message = '添加失败';
         }else{
+            $this -> store();
             $Api -> Status = 1;
             $Api -> Message = '添加成功';
         }
@@ -82,9 +85,15 @@ class LinkController extends Controller
         if (!$link -> delLink()) {
             $Api -> Message = '删除失败';
         }else{
+            $this -> store();
             $Api -> Status = 1;
             $Api -> Message = ' 删除成功';
         }
         return $Api -> AjaxReturn();
+    }
+
+    public function store() {
+
+        dispatch(new UpdateLinkCache());
     }
 }

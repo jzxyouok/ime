@@ -17,59 +17,14 @@
                 </section>
                 <p><meta name="robots" content="nofollow"/></p>
                 <ul class="link-items">
+                    @foreach($link as $val)
                     <li>
-                        <a href='#' target='_blank' title='盒子小栈 (7)'>
-                            <img alt="" src='http://cn.gravatar.com/avatar/571f51a0f082025db7216ad983449d0d?s=32&r=g' class="avatar avatar-120" width="120" height="120" />
-                            <span>盒子小栈<br></span>
+                        <a href='{{ $val -> web_url }}' target='_blank' title='{{ $val -> web_name }}'>
+                            <img alt="{{ $val -> web_admin }}" src='/upload/thumb/83620161123053910.jpg' class="avatar avatar-120" width="120" height="120" />
+                            <span>{{ $val -> web_name }}<br></span>
                         </a>
                     </li>
-                    <li>
-                        <a href='#' target='_blank' title='c (4)'>
-                            <img alt="" src='http://cn.gravatar.com/avatar/2106e2c3bad17698267dd8d101033491?s=32&r=g' class="avatar avatar-120" width="120" height="120" />
-                            <span>c<br></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href='#' target='_blank' title='尹先生 (4)'>
-                            <img alt="" src='http://cn.gravatar.com/avatar/571f51a0f082025db7216ad983449d0d?s=32&r=g' class="avatar avatar-120" width="120" height="120" />
-                            <span>尹先生<br></span>
-                        </a>
-                    </li>
-                    <li><a href='http://www.byspace.net' target='_blank' title='山野愚人居 (4)'>
-                            <img alt="" src='http://cn.gravatar.com/avatar/2106e2c3bad17698267dd8d101033491?s=32&r=g' class="avatar avatar-120" width="120" height="120" />
-                            <span>山野愚人居<br></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href='#' target='_blank' title='LiarOnce (3)'>
-                            <img alt="" src='http://cn.gravatar.com/avatar/571f51a0f082025db7216ad983449d0d?s=32&r=g' class="avatar avatar-120" width="120" height="120" />
-                            <span>LiarOnce<br></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href='#' target='_blank' title='初夏阳光 (2)'>
-                            <img alt="" src='http://cn.gravatar.com/avatar/2106e2c3bad17698267dd8d101033491?s=32&r=g' class="avatar avatar-120" width="120" height="120" />
-                            <span>初夏阳光<br></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href='#' target='_blank' title='乌云密布 (2)'>
-                            <img alt="" src='http://cn.gravatar.com/avatar/2106e2c3bad17698267dd8d101033491?s=32&r=g' class="avatar avatar-120" width="120" height="120" />
-                            <span>乌云密布<br></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href='#' target='_blank' title='自定义 (2)'>
-                            <img alt="" src='http://cn.gravatar.com/avatar/2106e2c3bad17698267dd8d101033491?s=32&r=g' class="avatar avatar-120" width="120" height="120" />
-                            <span>自定义<br></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href='#' target='_blank' title='苏格 (1)'>
-                            <img alt="" src='http://cn.gravatar.com/avatar/2106e2c3bad17698267dd8d101033491?s=32&r=g' class="avatar avatar-120" width="120" height="120" />
-                            <span>苏格<br></span>
-                        </a>
-                    </li>
+                    @endforeach
                 </ul>
                 <hr />
             </article>

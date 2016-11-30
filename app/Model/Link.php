@@ -25,6 +25,14 @@ class Link extends Model
             ->paginate(10);
     }
 
+    public function selectLink() {
+
+        return self::select('web_name' ,'web_url' ,'web_admin' ,'web_logo' , 'web_description')
+            ->where('web_status' , '=' , 0)
+            ->orderBy('web_order' , 'asc')
+            ->get();
+    }
+
     public function findLink($linkId) {
 
         return self::join('users' , 'links.operate_user' , '=' , 'users.id')

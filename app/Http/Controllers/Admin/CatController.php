@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Api\Api;
 use App\Http\Controllers\Controller;
+use App\Jobs\UpdateMenuCache;
 use App\Model\Category;
+use App\Tool\UpdateCache;
 use Session;
 use Request;
 
@@ -54,6 +56,7 @@ class CatController extends Controller
         if (empty($operateResult)) {
             $CatApi -> Message = '删除失败';
         }else{
+            $this -> store();
             $CatApi -> Status = 1;
             $CatApi -> Data = $operateResult;
             $CatApi -> Message = '删除成功';
@@ -70,6 +73,7 @@ class CatController extends Controller
         if (!$category -> addCat()) {
             $CatApi -> Message = "添加失败 ！";
         }else{
+            $this -> store();
             $CatApi -> Status = 1;
             $CatApi ->  Message = "添加成功";
         }
@@ -81,6 +85,7 @@ class CatController extends Controller
         if (!$category -> editCat()) {
             $CatApi -> Message = '修改失败';
         }else{
+            $this -> store();
             $CatApi -> Status = 1;
             $CatApi -> Message = '修改成功';
         }
@@ -92,10 +97,16 @@ class CatController extends Controller
         if (!$category -> editStatus()) {
             $CatApi -> Message = "修改失败";
         }else{
+            $this -> store();
             $CatApi -> Status = 1;
             $CatApi -> Message = "修改成功";
             $CatApi -> Data = $category -> simpleFind();
         }
         return $CatApi -> AjaxReturn();
+    }
+
+    public function store() {
+
+        dispatch(new UpdateMenuCache());
     }
 }

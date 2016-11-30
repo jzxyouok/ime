@@ -78,6 +78,19 @@ class Article extends Model
             ->get();
     }
 
+    public function selectCatArticle($offset , $CatId) {
+
+        return self::join('users' , 'articles.author' , '=' , 'users.id')
+            ->join('categories' , 'articles.cat_id' , '=' , 'categories.id')
+            ->join('articles_status' , 'articles.article_status' , '=' , 'articles_status.id')
+            ->select('articles.id' , 'articles.article_title' ,'categories.cat_name' , 'articles.thumb' , 'articles.content' , 'articles.seo_title' , 'articles.seo_keyword' , 'articles.seo_description' , 'users.name as author' , 'articles.updated_at')
+            ->where('cat_id' , '=' , $CatId)
+            ->orderBy('id','desc')
+            ->take(10)
+            ->skip($offset)
+            ->get();
+    }
+
     public function selectArt() {
         return self::join('users' , 'articles.author' , '=' , 'users.id')
             ->join('categories' , 'articles.cat_id' , '=' , 'categories.id')

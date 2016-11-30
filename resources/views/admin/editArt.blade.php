@@ -143,7 +143,7 @@
                     _token: '{{ csrf_token() }}',
                     id: {{ $article -> id }},
                     article_title: $('input[name=title]').val(),
-                    top: $('input[name=top]:checked').val() ? 0 : 1,
+                    top: $('input[name=top]:checked').val() ? 1 : 0,
                     article_status: $(this).attr('value') ,
                     thumb: $('input[name=bannerPic]').val(),
                     content: $('textarea[name=content]').val(),

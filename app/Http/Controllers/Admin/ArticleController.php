@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Api\Api;
 use App\Http\Controllers\Controller;
+use App\Jobs\UpdateIndexCache;
 use App\Model\Article;
 use App\Model\Category;
 use App\Model\Upload;
@@ -77,15 +78,16 @@ class ArticleController extends Controller
             if (!$artInfo -> delete()) {
                 $Api -> Message = '移至垃圾箱失败';
             }else{
+                $this -> store();
                 $Api -> Status = 1;
                 $Api -> Message = '移至垃圾箱成功';
             }
         }else if (Request::get('article_status') == 1) {
-
+            $this -> store();
             $Api -> Status = 1;
             $Api -> Message = '保存草稿成功';
         }else{
-
+            $this -> store();
             $Api -> Status = 1;
             $Api -> Message = '修改成功';
         }
@@ -105,6 +107,7 @@ class ArticleController extends Controller
         if (!$article -> toDustbin()) {
             $Api -> Message = '移至垃圾箱失败';
         }
+        $this -> store();
         $Api -> Status = 1;
         $Api -> Message = '移至垃圾箱成功';
         return $Api -> AjaxReturn();
@@ -123,6 +126,7 @@ class ArticleController extends Controller
         if (!$article -> deleteArt()) {
             $Api -> Message = '删除失败';
         }
+        $this -> store();
         $Api -> Status = 1;
         $Api -> Message = '删除成功';
         return $Api -> AjaxReturn();
@@ -140,6 +144,7 @@ class ArticleController extends Controller
         if (!$article -> restoreArt()) {
             $Api -> Message = '还原失败';
         }
+        $this -> store();
         $Api -> Status = 1;
         $Api -> Message = '还原成功';
         return $Api -> AjaxReturn();
@@ -186,11 +191,11 @@ class ArticleController extends Controller
                 $Api -> Message = '移至垃圾箱成功';
             }
         }else if (Request::get('article_status') == 1) {
-
+            $this -> store();
             $Api -> Status = 1;
             $Api -> Message = '保存草稿成功';
         }else{
-
+            $this -> store();
             $Api -> Status = 1;
             $Api -> Message = '添加成功';
         }
@@ -222,5 +227,9 @@ class ArticleController extends Controller
         $picInfo = json_decode($picInfo);
 
         return $picInfo -> url;
+    }
+
+    public function store() {
+        dispatch(new UpdateIndexCache());
     }
 }

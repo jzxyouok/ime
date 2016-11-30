@@ -9,8 +9,8 @@ use Request;
 class LinkController extends Controller
 {
     public function index() {
-        
         return view('home.link')
-            ->with('menu' , Cache::get('topMenu'));
+            ->with('menu' , Cache::get('topMenu'))
+            ->with('link' , Cache::get('link'));
     }
 }

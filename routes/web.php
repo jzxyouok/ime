@@ -44,8 +44,6 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'login'], function () {
     Route::get('delCat' , 'Admin\CatController@delCat');
     Route::get('comment' , 'Admin\CommentController@index');
     Route::get('msg' , 'Admin\MsgController@index');
-    Route::get('cache' , 'Admin\CacheController@index');
-    Route::get('cache/updateIndex' , 'Admin\CacheController@updateIndex');
     Route::get('link' , 'Admin\LinkController@index');
     Route::get('addLink' , 'Admin\LinkController@addLink');
     Route::post('toAddLink' , 'Admin\LinkController@toAddLink');

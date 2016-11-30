@@ -93,6 +93,7 @@ class Category extends Model
 
     public function selectMenu() {
         $catInfo = self::select('id','cat_name','cat_pid','cat_seo_title','cat_seo_keyword','cat_seo_description','cat_url')
+            ->where('cat_status' , '=' , 0)
             ->orderBy('cat_order' , 'asc')
             ->orderBy('id','desc')
             ->get()

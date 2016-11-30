@@ -1,27 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Tool;
 
-use App\Http\Controllers\Controller;
 use App\Model\Article;
 use App\Model\Category;
 use Illuminate\Support\Facades\Cache;
 use Session;
-use Request;
 
-class CacheController extends Controller
+class UpdateCache
 {
-    public function index() {
-
-        $title = '更新缓存';
-
-        $category = new Category();
-        $catInfo = $category -> simpleFind();
-        
-        return view('admin.cache' , compact('title'))
-            -> with('cat' , $catInfo)
-            -> with('user' , Session::get('userInfo'));
-    }
+//    public function index() {
+//
+//        $title = '更新缓存';
+//
+//        $category = new Category();
+//        $catInfo = $category -> simpleFind();
+//
+//        return view('admin.cache' , compact('title'))
+//            -> with('cat' , $catInfo)
+//            -> with('user' , Session::get('userInfo'));
+//    }
 
     public function updateIndex() {
 
